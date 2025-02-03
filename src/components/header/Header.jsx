@@ -1,0 +1,87 @@
+import React from 'react'
+import styles from './Header.module.scss'
+import logo from '../assets/images/kitabevim_logo.png'
+import { FaSearch } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { GiHamburgerMenu } from "react-icons/gi";
+import Drawer from 'react-modern-drawer'
+import 'react-modern-drawer/dist/index.css'
+
+
+const Header = () => {
+    const [isOpen, setIsOpen] = React.useState(false)
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+    }
+    return (
+        <>
+            <div className={styles.headertop}>
+                <div className={styles.container}>
+                    <div className={styles.logo}>
+                        <Link to="/"> <img src={logo} alt="logo" /></Link>
+                    </div>
+                    <div className={styles.input}>
+                        <input type="text" placeholder=' Məhsullarda axtarış' />
+                        <button><FaSearch />
+                        </button>
+                    </div>
+                    <div className={styles.icons}>
+                        <a href="/login"><FaUser />    <span>Daxil ol</span>    </a>
+                        <a href="/wishlist"><FaHeart />  <span>Sevimlilərim</span>   </a>
+                        <a href="/basket"><FaCartShopping />   <span>Mənim Səbətim</span> </a>
+                        <div className={styles.hamburger}>
+                            <button onClick={toggleDrawer}><GiHamburgerMenu />
+                            </button>
+                            <Drawer
+                                open={isOpen}
+                                onClose={toggleDrawer}
+                                direction='right'
+                                className='bla bla bla'
+                            >
+                                <div className={styles.menu}>
+                                    <ul>
+                                        <li><a href="#">Kitablar</a></li>
+                                        <li><a href="#">Dəftərxana</a></li>
+                                        <li><a href="#">Çantalar</a></li>
+                                        <li><a href="#">Hədiyyəlik</a></li>
+                                        <li><a href="#">Haqqımızda</a></li>
+                                        <li><a href="#">Onlayn ödəniş</a></li>
+                                        <li><a href="#">Əlaqə</a></li>
+                                    </ul>
+                                </div>
+                                <div className={styles.contact}>
+                                    <p>Əlaqə: +99455 6425446</p>
+                                </div>
+                            </Drawer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles.headerbottom}>
+                <div className={styles.bottom}>
+                    <div className={styles.navbar}>
+                        <ul>
+                            <li><a href="#"><GiHamburgerMenu /> <span>Menu</span> </a></li>
+                            <li><a href="#">Kitablar</a></li>
+                            <li><a href="#">Dəftərxana</a></li>
+                            <li><a href="#">Çantalar</a></li>
+                            <li><a href="#">Hədiyyəlik</a></li>
+                            <li><a href="#">Haqqımızda</a></li>
+                            <li><a href="#">Onlayn ödəniş</a></li>
+                            <li><a href="#">Əlaqə</a></li>
+                        </ul>
+                    </div>
+                    <div className={styles.contact}>
+                        <p>Əlaqə: +99455 6425446</p>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default Header

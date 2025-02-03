@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+    gap: 10px;
+    h1{
+        font-size: 100px;
+        color: white;
+    }
+    p{
+        color: white;
+    }
+    button{
+        cursor: pointer;
+        color: red;
+        text-transform: uppercase;
+        background-color: white;
+        width: 150px;
+        height: 45px;
+    }
+}
