@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Header.module.scss'
-import logo from '../assets/images/kitabevim_logo.png'
+import logo from '../assets/images/WhatsApp_Şəkil_2025-02-03_saat_23.41.36_7e8ea673-removebg-preview.png'
 import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";

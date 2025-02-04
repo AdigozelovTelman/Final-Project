@@ -7,7 +7,7 @@ const Notfound = () => {
   return (
     <div className={styles.container}>
         <h1>404 Not Found</h1>
-        <button onClick={() => navigate(-1)}>Go home</button>
+        <button onClick={() => navigate(-1)}>Go back</button>
     </div>
   )
 }
