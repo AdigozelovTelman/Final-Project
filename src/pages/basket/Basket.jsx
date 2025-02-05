@@ -1,50 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import Cards from '../../components/cards/Cards';
-import axios from 'axios';
+import React, { useEffect } from 'react'
+import Layout from '../../components/layout/Layout'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteBasketThunk, getBasketThunk } from '../../redux/reducers/basketSlice'
 import styles from './Basket.module.scss'
-import Layout from '../../components/layout/Layout';
 
 const Basket = () => {
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-    axios.get("http://localhost:5050/basket").then((res) => {
-      setProduct(res.data);
-    });
-  }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:5050/basket/${id}`)
-      .then((res) => {
-        setProduct(product.filter((item) => item.id !== id));
-      })
-      .catch((error) => {
-        console.error("Error deleting item:", error);
-      });
-  };
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getBasketThunk())
+  }, [dispatch])
+
+  const basket = useSelector((state) => state.basket.basket) || []
+
+
+  const deleteBasket = (id) => {
+    dispatch(deleteBasketThunk(id))
+  }
   return (
-    <>
-    <div className={styles.sectionTwo}>
-      <Layout>
-        <div className={styles.containerProducts}>
-          <div className={styles.items}>
-            {product &&
-              product.map((item) => (
-                <div key={item.id} className={styles.cardWrapper}>
-                  <Cards item={item} />
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    Sil
-                  </button>
-                </div>
-              ))}
-          </div>
+    <Layout>
+      <div className={styles.container}>
+        <div className={styles.cards}>
+          {basket && basket.map(item => {
+            return <div className={styles.card}>
+         <div className={styles.imgBox}>
+          <img src={item.image} alt={item.title} />
         </div>
-      </Layout>
-    </div>
-  </>
+        <p className={styles.title}>{item.title}</p>
+        <p className={styles.price}>{item.price}</p>
+        <button onClick={() => deleteBasket(item._id)}>Sil</button>
+            </div>
+          })}
+        </div>
+      </div>
+    </Layout>
   )
 }
 

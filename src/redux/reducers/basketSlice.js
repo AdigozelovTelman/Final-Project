@@ -11,6 +11,7 @@ export const postBasketThunk = createAsyncThunk('api/postbasket', async(data)=>{
     const response = await axios.post('http://localhost:5000/basket/', data)
     return response.data
     
+    
 })
 export const deleteBasketThunk = createAsyncThunk('api/deletebasket', async(id)=>{
     const response = await axios.delete(`http://localhost:5000/basket/${id}` )
@@ -26,18 +27,18 @@ export const basketSlice = createSlice({
 
     extraReducers:builder =>{
         builder
-        //get
+       
         .addCase(getBasketThunk.fulfilled, (state, action)=>{
             state.loading = false
-            state.products = action.payload
+            state.basket = action.payload
         })
         //post
         .addCase(postBasketThunk.fulfilled, (state, action)=>{
-            state.products.push(action.payload)
+            state.basket.push(action.payload)
         })   
         //delete
         .addCase(deleteBasketThunk.fulfilled, (state, action)=>{
-            state.products = state.products.filter((item)=>item._id  !== action.payload)
+            state.basket = state.basket.filter((item)=>item._id  !== action.payload)
         })
     }
 })

@@ -3,6 +3,8 @@ import Cards from "../../../../components/cards/Cards";
 import { getProductsThunk, postProductBasketThunk } from "../../../../redux/reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Azebook.module.scss";
+import { postBasketThunk } from "../../../../redux/reducers/basketSlice";
+import { postWishlistThunk } from "../../../../redux/reducers/wishlistSlice";
 
 const Azebook = () => {
     const dispatch = useDispatch();
@@ -18,7 +20,7 @@ const Azebook = () => {
 
     useEffect(() => {
         dispatch(getProductsThunk());
-    }, [dispatch]);
+    }, []);
 
 
     if (error) return <p>XƏTA BAŞ VERDİ</p>;
@@ -38,6 +40,19 @@ const Azebook = () => {
         setStartIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
     };
 
+    const addBasket = async (item) => {
+        dispatch(postBasketThunk(item))
+        console.log(item);
+        
+    }
+    
+    const addWishlist = (item) => {
+        dispatch(postWishlistThunk(item))
+        console.log(item);
+        
+    }
+    
+
     return (
         <div className={styles.azebook}>
         <h2>Azərbaycan dilində kitablar</h2>
@@ -48,7 +63,8 @@ const Azebook = () => {
             
             <div className={styles.slider}>
                 {visibleProducts.map((item) => (
-                    <Cards key={item.id} item={item} />
+                    <Cards key={item.id} item={item} addBasket={() => addBasket(item)} addwishlist={()=> addWishlist(item)} />
+                    // <button onClick={addBasket(item)}>addsss</button>
                 ))}
             </div>
 
