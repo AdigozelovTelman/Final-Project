@@ -4,13 +4,9 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid #f3f3f3;
-    border-radius: 15px;
     position: relative;
-    padding-top: 20px;
-    box-shadow: 1px 2px 1px 2px #f3f3f3;
-    
-    .cards{
+
+    .cards {
         justify-content: center;
         display: flex;
         justify-content: center;
@@ -18,38 +14,48 @@
         gap: 20px;
         flex-wrap: wrap;
         width: 100%;
-        .card{
+
+        .card {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-top: 20px;
+            border-radius: 15px;
             width: 23%;
+            border: 1px solid #f3f3f3;
+            box-shadow: 1px 2px 1px 2px #f3f3f3;
+
             .imgBox {
                 width: 80%;
                 height: 40vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-        
+
                 img {
                     width: 80%;
                     height: 90%;
                 }
             }
+
             .title {
                 font-size: 16px;
                 font-family: "Mukta", serif;
                 margin: 10px;
-                &:hover{
+
+                &:hover {
                     color: #ff9923;
                     transition: .5s;
                 }
             }
-            .price{
+
+            .price {
                 font-size: 16px;
                 font-family: "Mukta", serif;
                 color: #4D669B;
             }
-            button{
+
+            button {
                 background-color: #4D669B;
                 color: white;
                 width: 150px;
@@ -66,7 +72,7 @@
 }
 
 @media (max-width:576px) {
-    .container{
+    .container {
         width: 90%;
     }
 }

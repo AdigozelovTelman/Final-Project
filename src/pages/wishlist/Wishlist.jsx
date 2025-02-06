@@ -5,7 +5,7 @@ import Layout from '../../components/layout/Layout'
 import styles from './Wishlist.module.scss'
 
 const Wishlist = () => {
-  
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -24,12 +24,12 @@ const Wishlist = () => {
         <div className={styles.cards}>
           {wishlist && wishlist.map(item => {
             return <div className={styles.card}>
-         <div className={styles.imgBox}>
-          <img src={item.image} alt={item.title} />
-        </div>
-        <p className={styles.title}>{item.title}</p>
-        <p className={styles.price}>{item.price}</p>
-        <button onClick={() => deleteWishlist(item._id)}>Sil</button>
+              <div className={styles.imgBox}>
+                <img src={item.image} alt={item.title} />
+              </div>
+              <p className={styles.title}>{item.title}</p>
+              <p className={styles.price}>{item.price}</p>
+              <button onClick={() => deleteWishlist(item._id)}>Sil</button>
             </div>
           })}
         </div>

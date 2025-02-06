@@ -1,5 +1,5 @@
 .container {
-    width: 28%;
+    width: 30%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -9,11 +9,18 @@
     border-radius: 15px;
     position: relative;
     padding-top: 20px;
+    height: 65vh;
 
+    &:hover {
+        .title {
+            color: #ff9923;
+            transition: .5s;
+        }
+    }
 
     .imgBox {
-        width: 90%;
-        height: 38vh;
+        width: 100%;
+        height: 40vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,12 +35,10 @@
         font-size: 16px;
         font-family: "Mukta", serif;
         margin: 10px;
-        &:hover{
-            color: #ff9923;
-            transition: .5s;
-        }
+        font-weight: 500;
     }
-    .price{
+
+    .price {
         font-size: 16px;
         font-family: "Mukta", serif;
         color: #4D669B;
@@ -68,7 +73,7 @@
         gap: 5px;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
             color: #7D4D32;
             background-color: rgb(210, 209, 214);
             transition: .5s;
@@ -78,7 +83,11 @@
 }
 
 @media (max-width:576px) {
-    .container{
+    .container {
         width: 90%;
+        .imgBox{
+            height: 40vh;
+            width: 85%;
+        }
     }
 }

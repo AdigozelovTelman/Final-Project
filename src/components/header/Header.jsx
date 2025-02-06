@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Header.module.scss'
 import logo from '../assets/images/WhatsApp_Şəkil_2025-02-03_saat_23.41.36_7e8ea673-removebg-preview.png'
 import { FaSearch } from "react-icons/fa";
@@ -10,12 +10,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 
-
 const Header = () => {
     const [isOpen, setIsOpen] = React.useState(false)
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
+    
     return (
         <>
             <div className={styles.headertop}>
@@ -23,6 +23,7 @@ const Header = () => {
                     <div className={styles.logo}>
                         <Link to="/"> <img src={logo} alt="logo" /></Link>
                     </div>
+                     
                     <div className={styles.input}>
                         <input type="text" placeholder=' Məhsullarda axtarış' />
                         <button><FaSearch />

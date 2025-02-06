@@ -1,4 +1,4 @@
-.azebook {
+.rusbook {
     text-align: center;
     padding: 20px;
     // margin-top: 40px;
@@ -43,7 +43,7 @@
 }
 
 @media (max-width:576px) and (min-width:200px) {
-    .azebook {
+    .rusbook {
         margin-top: 40px;
         h2 {
             font-size: 30px;
@@ -52,13 +52,10 @@
         .sliderContainer {
             .slider {
                 width: 100%;
-                display: grid; // 📌 CSS Grid aktiv edildi
-                grid-template-columns: repeat(2, 1fr); // 📌 2 sütun
-                grid-template-rows: 1fr; // 📌 Cəmi 1 sətir olacaq
-                gap: 10px; // 📌 Kartlar arası məsafə
-                justify-items: center; // 📌 Kartları ortala
-                overflow-x: auto; // 📌 Lazım olarsa üfüqi sürüşmə olsun
-                white-space: nowrap; // 📌 Sətirlərin dəyişməsinin qarşısını alır
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
             }
         }
     }

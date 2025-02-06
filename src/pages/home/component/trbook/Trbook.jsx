@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../../../../components/cards/Cards";
-import { getProductsThunk, postProductBasketThunk } from "../../../../redux/reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Azebook.module.scss";
 import { postBasketThunk } from "../../../../redux/reducers/basketSlice";
 import { postWishlistThunk } from "../../../../redux/reducers/wishlistSlice";
+import styles from "./Trbook.module.scss";
+import { getTrProductsThunk } from "../../../../redux/reducers/trproductSlice";
 
-const Azebook = () => {
+const Trbook = () => {
     const dispatch = useDispatch();
 
-    const products = useSelector((state) => state.products.products);
-    const loading = useSelector((state) => state.products.loading);
-    const error = useSelector((state) => state.products.error);
+    const trproducts = useSelector((state) => state.trproducts.trproducts || []);
+    const loading = useSelector((state) => state.trproducts.loading);
+    const error = useSelector((state) => state.trproducts.error);
 
     //  Aktiv şəkillərin indeksini saxlayan state
     const [startIndex, setStartIndex] = useState(0);
@@ -19,43 +19,42 @@ const Azebook = () => {
 
 
     useEffect(() => {
-        dispatch(getProductsThunk());
+        dispatch(getTrProductsThunk());
     }, [dispatch]);
-
 
     if (error) return <p>XƏTA BAŞ VERDİ</p>;
     if (loading) return <p>Yüklənir...</p>;
 
-    //  Boşluq qalmamagi məhsulları dövrə salırıq
-    const wrappedProducts = [...products, ...products.slice(0, itemsPerPage)];
+    // Məhsulları təkrarlamadan yalnız lazım olan hissəni götürək
+    const wrappedProducts = [...trproducts, ...trproducts.slice(0, itemsPerPage)];
     const visibleProducts = wrappedProducts.slice(startIndex, startIndex + itemsPerPage);
-
-    //  Hər dəfə 1 şəkil irəli keçmək və sona çatanda yenidən başlamaq
+    // Hər dəfə 1 şəkil irəli keçmək və sona çatanda yenidən başlamaq
     const handleNext = () => {
-        setStartIndex((prevIndex) => (prevIndex + 1) % products.length);
+        if (trproducts.length > 0) {
+            setStartIndex((prevIndex) => (prevIndex + 1) % trproducts.length);
+        }
     };
 
     // Hər dəfə 1 şəkil geri keçmək və əvvələ çatanda sonuncuya qayıtmaq
     const handlePrev = () => {
-        setStartIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
+        if (trproducts.length > 0) {
+            setStartIndex((prevIndex) => (prevIndex - 1 + trproducts.length) % trproducts.length);
+        }
     };
 
     const addBasket = async (item) => {
-        dispatch(postBasketThunk(item))
+        dispatch(postBasketThunk(item));
         console.log(item);
-
-    }
+    };
 
     const addWishlist = (item) => {
-        dispatch(postWishlistThunk(item))
+        dispatch(postWishlistThunk(item));
         console.log(item);
-
-    }
-
+    };
 
     return (
-        <div className={styles.azebook}>
-            <h2>Azərbaycan dilində kitablar</h2>
+        <div className={styles.trbook}>
+            <h2>Türk dilində kitablar</h2>
             <div className={styles.sliderContainer}>
                 <button className={styles.prevButton} onClick={handlePrev}>
                     {"<"}
@@ -64,7 +63,6 @@ const Azebook = () => {
                 <div className={styles.slider}>
                     {visibleProducts.map((item) => (
                         <Cards key={item.id} item={item} addBasket={() => addBasket(item)} addwishlist={() => addWishlist(item)} />
-
                     ))}
                 </div>
 
@@ -76,4 +74,4 @@ const Azebook = () => {
     );
 };
 
-export default Azebook;
+export default Trbook;
