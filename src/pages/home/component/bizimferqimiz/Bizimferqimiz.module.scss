@@ -1,0 +1,97 @@
+.container {
+    width: 100%;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 60vh;
+
+    h3 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    h3::after {
+        content: "";
+        width: 50px;
+        height: 4px;
+        background-color: #ff6600;
+        display: block;
+        margin: 8px auto 0;
+        border-radius: 2px;
+    }
+    .carts {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        width: 100%;
+        .cart {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            }
+        
+            img {
+                width: 80px;
+                height: auto;
+                margin-bottom: 15px;
+            }
+        
+            h5 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 10px;
+            }
+        
+            p {
+                font-size: 14px;
+                color: #666;
+                line-height: 1.5;
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width: 1024px) {
+    .container{
+        .carts {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .container{
+        height: 150vh;
+        .carts {
+            grid-template-columns: 1fr; 
+            .cart {
+                padding: 15px;
+                
+                    img {
+                        width: 60px;
+                    }
+                
+                    h3 {
+                        font-size: 24px;
+                    }
+            }
+        }
+    }
+
+}

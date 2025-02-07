@@ -15,7 +15,34 @@ const Header = () => {
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
-    
+
+    const fullText = "Növbəti kitabınızı axtarın";
+    const [placeholder, setPlaceholder] = useState("");
+    const [index, setIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (!isDeleting) {
+                if (index < fullText.length) {
+                    setPlaceholder(fullText.slice(0, index + 1));
+                    setIndex(index + 1);
+                } else {
+                    setTimeout(() => setIsDeleting(true), 3000);
+                }
+            } else {
+                if (index > 0) {
+                    setPlaceholder(fullText.slice(0, index - 1));
+                    setIndex(index - 1);
+                } else {
+                    setIsDeleting(false);
+                }
+            }
+        }, 150); 
+
+        return () => clearTimeout(timeout);
+    }, [index, isDeleting]);
+
     return (
         <>
             <div className={styles.headertop}>
@@ -25,7 +52,7 @@ const Header = () => {
                     </div>
                      
                     <div className={styles.input}>
-                        <input type="text" placeholder=' Məhsullarda axtarış' />
+                        <input type="text" placeholder={placeholder} />
                         <button><FaSearch />
                         </button>
                     </div>

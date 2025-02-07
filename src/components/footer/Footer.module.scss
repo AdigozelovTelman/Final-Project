@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerFooter {
+    border-top: 1px solid #dedfe2;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+    background-color: #F8FAFC;
+    padding: 10px;
+    
+    .footermenu {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: start;
+        padding: 10px;
+
+        .mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            align-items: start;
+            justify-content: center;
+
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                font-family: "Mukta", sans-serif;
+                color: #25262a;
+            }
+
+            a {
+                text-decoration: none;
+                color: gray;
+
+                &:hover {
+                    color: #3a2ee0;
+                    transition: .3s;
+                }
+            }
+        }
+        .izle{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            
+
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                font-family: "Mukta", sans-serif;
+                color: #25262a;
+            }
+            .icon{
+                display: flex;
+                gap: 5px;
+                a{
+                    color: gray;
+                    text-decoration: none;
+                    svg{
+                        font-size: 18px;
+                    }
+
+                    &:hover {
+                        color: #3a2ee0;
+                        transition: .5s;
+                        transform: rotateY(180deg);
+                    }
+                }
+
+            }
+           
+        }
+
+        .hardware {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            align-items: start;
+            justify-content: center;
+
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                font-family: "Mukta", sans-serif;
+                color: #25262a;
+            }
+
+            a {
+                text-decoration: none;
+                color: gray;
+
+                &:hover {
+                    color: #3a2ee0;
+                    transition: .3s;
+                }
+            }
+        }
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+    
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                font-family: "Mukta", sans-serif;
+                color: #25262a;
+            }
+    
+            .boxes {
+                display: flex;
+                gap: 5px;
+    
+                a {
+                    color: #7971EA;
+                }
+    
+                span {
+                    font-size: 16px;
+                    font-weight: 300;
+                    font-family: "Mukta", sans-serif;
+                    width: 250px;
+                }
+            }
+    
+            
+        }
+    }
+
+
+
+}
+
+.bookcenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8FAFC;
+    padding: 10px;
+    .center {
+        p {
+            font-size: 16px;
+            font-family: Arial, "Helvetica Neue", -apple-system, sans-serif;
+        }
+    }
+    .butun{
+        p{
+            font-size: 16px;
+            font-family: "Roboto", sans-serif;
+        }
+    }
+
+    .visa {
+        img {
+            padding: 0px 15px;
+
+        }
+    }
+}
+
+@media (max-width:576px) {
+    .containerFooter {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 0px 20px;
+        height: 100vh;
+
+        .footermenu {
+            flex-direction: column;
+            align-items: start;
+            padding: 0px 10px;
+            gap: 20px;
+
+            .contact {
+                .boxes {
+                    span {
+                        width: 100%;
+                    }
+                }
+    
+    
+            }
+        }
+
+    }
+    .bookcenter{
+        height: 50vh;
+    }
+}
+
+// @media (min-width:577px) and (max-width:991px){
+//     .containerFooter {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: start;
+//         padding: 0px 20px;
+//         height: 100vh;
+//         .footermenu {
+//             flex-direction: column;
+//             align-items: start;
+//             padding: 0px 10px;
+//             gap: 20px;
+
+//             .sell {
+//                 padding-top: 50px;
+
+
+//             }
+//         }
+//     }
+// }

@@ -4,6 +4,8 @@ import Newbook from './component/newbook/Newbook'
 import Azebook from './component/azebook/Azebook'
 import Trbook from './component/trbook/Trbook'
 import Rusbook from './component/rusbook/Rusbook'
+import Usaqbook from './component/usaqbook/Usaqbook'
+import Bizimferqimiz from './component/bizimferqimiz/Bizimferqimiz'
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
         <Azebook/>
         <Trbook/>
         <Rusbook/>
+        <Usaqbook/>
+        <Bizimferqimiz/>
     </Layout>
   )
 }
