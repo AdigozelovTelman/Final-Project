@@ -3,6 +3,7 @@ import Layout from '../../components/layout/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteBasketThunk, getBasketThunk } from '../../redux/reducers/basketSlice'
 import styles from './Basket.module.scss'
+import { BiJoystick } from 'react-icons/bi'
 
 const Basket = () => {
 

@@ -73,6 +73,21 @@
 
 @media (max-width:576px) {
     .container {
-        width: 90%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        .cards{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            align-items: center;
+            .card{
+                width: 100%;
+                .imgBox{
+                    height: 40vh;
+                    width: 85%;
+                }
+            }
+        }
     }
 }
