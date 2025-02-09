@@ -13,10 +13,27 @@ const Rusbook = () => {
     const loading = useSelector((state) => state.rusproducts.loading);
     const error = useSelector((state) => state.rusproducts.error);
 
-    //  Aktiv şəkillərin indeksini saxlayan state
-    const [startIndex, setStartIndex] = useState(0);
-    const itemsPerPage = 4; // Hər dəfə neçə şəkil göstərilsin
 
+    const [startIndex, setStartIndex] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(4);
+
+    useEffect(() => {
+
+        const updateItemsPerPage = () => {
+            if (window.innerWidth <= 576) {
+                setItemsPerPage(1);
+            } else if (window.innerWidth <= 991) {
+                setItemsPerPage(3);
+            } else {
+                setItemsPerPage(4);
+            }
+        };
+
+        updateItemsPerPage();
+        window.addEventListener("resize", updateItemsPerPage);
+
+        return () => window.removeEventListener("resize", updateItemsPerPage);
+    }, []);
 
     useEffect(() => {
         dispatch(getRusProductsThunk());

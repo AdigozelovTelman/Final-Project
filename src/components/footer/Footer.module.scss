@@ -59,19 +59,27 @@
             }
             .icon{
                 display: flex;
-                gap: 5px;
+                gap: 8px;
                 a{
                     color: gray;
                     text-decoration: none;
-                    svg{
-                        font-size: 18px;
+                    svg {
+                        width: 22px;
+                        height: 22px;
+                        color: #4A90E2 ;
+                        transition: all 0.3s ease;
+                
+                        &:hover {
+                            fill: #FF5733; 
+                            transform:  rotateY(180deg);
+                        }
                     }
 
-                    &:hover {
-                        color: #3a2ee0;
-                        transition: .5s;
-                        transform: rotateY(180deg);
-                    }
+                    // &:hover {
+                    //     color: #3a2ee0;
+                    //     transition: .5s;
+                    //     transform: rotateY(180deg);
+                    // }
                 }
 
             }
@@ -196,24 +204,24 @@
     }
 }
 
-// @media (min-width:577px) and (max-width:991px){
-//     .containerFooter {
-//         display: flex;
-//         flex-direction: column;
-//         align-items: start;
-//         padding: 0px 20px;
-//         height: 100vh;
-//         .footermenu {
-//             flex-direction: column;
-//             align-items: start;
-//             padding: 0px 10px;
-//             gap: 20px;
+@media (min-width:577px) and (max-width:991px){
+    .containerFooter {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 0px 20px;
+        height: 100vh;
+        .footermenu {
+            flex-direction: column;
+            align-items: start;
+            padding: 0px 10px;
+            gap: 20px;
 
-//             .sell {
-//                 padding-top: 50px;
+            .sell {
+                padding-top: 50px;
 
 
-//             }
-//         }
-//     }
-// }
+            }
+        }
+    }
+}

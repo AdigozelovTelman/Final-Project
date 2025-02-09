@@ -242,3 +242,47 @@
         }
     }
 }
+
+@media (min-width:577px) and (max-width:991px) {
+    .headertop {
+        .container {
+            .logo {
+                img {
+                    width: 100%;
+                }
+            }
+
+            .input {
+                display: none;
+            }
+
+            .icons {
+                .hamburger {
+                    display: block;
+                }
+
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .headerbottom {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        .bottom {
+            .navbar {
+                ul {
+                    display: none;
+                }
+            }
+
+            .contact {
+                display: none;
+            }
+        }
+    }
+}

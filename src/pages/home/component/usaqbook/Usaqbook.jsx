@@ -13,11 +13,27 @@ const Usaqbook = () => {
     const loading = useSelector((state) => state.usaqproducts.loading);
     const error = useSelector((state) => state.usaqproducts.error);
 
-    //  Aktiv şəkillərin indeksini saxlayan state
     const [startIndex, setStartIndex] = useState(0);
-    const itemsPerPage = 4; 
-
-
+     const [itemsPerPage, setItemsPerPage] = useState(4); 
+        
+        useEffect(() => {
+          
+            const updateItemsPerPage = () => {
+                if (window.innerWidth <= 576) {
+                    setItemsPerPage(1); 
+                } else if (window.innerWidth <= 991) {
+                    setItemsPerPage(3); 
+                } else {
+                    setItemsPerPage(4); 
+                }
+            };
+    
+            updateItemsPerPage();
+            window.addEventListener("resize", updateItemsPerPage); 
+    
+            return () => window.removeEventListener("resize", updateItemsPerPage);
+        }, []);
+        
     useEffect(() => {
         dispatch(getUsaqProductsThunk());
     }, [dispatch]);
@@ -25,10 +41,9 @@ const Usaqbook = () => {
     if (error) return <p>XƏTA BAŞ VERDİ</p>;
     if (loading) return <p>Yüklənir...</p>;
 
-    // Məhsulları təkrarlamadan yalnız lazım olan hissəni götürək
     const wrappedProducts = [...usaqproducts, ...usaqproducts.slice(0, itemsPerPage)];
     const visibleProducts = wrappedProducts.slice(startIndex, startIndex + itemsPerPage);
-    // Hər dəfə 1 şəkil irəli keçmək və sona çatanda yenidən başlamaq
+
     const handleNext = () => {
         if (usaqproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex + 1) % usaqproducts.length);

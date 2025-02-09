@@ -13,11 +13,27 @@ const Trbook = () => {
     const loading = useSelector((state) => state.trproducts.loading);
     const error = useSelector((state) => state.trproducts.error);
 
-    //  Aktiv şəkillərin indeksini saxlayan state
     const [startIndex, setStartIndex] = useState(0);
-    const itemsPerPage = 4; // Hər dəfə neçə şəkil göstərilsin
+    const [itemsPerPage, setItemsPerPage] = useState(4);
 
+    useEffect(() => {
 
+        const updateItemsPerPage = () => {
+            if (window.innerWidth <= 576) {
+                setItemsPerPage(1);
+            } else if (window.innerWidth <= 991) {
+                setItemsPerPage(3);
+            } else {
+                setItemsPerPage(4);
+            }
+        };
+
+        updateItemsPerPage();
+        window.addEventListener("resize", updateItemsPerPage);
+
+        return () => window.removeEventListener("resize", updateItemsPerPage);
+    }, []);
+    
     useEffect(() => {
         dispatch(getTrProductsThunk());
     }, [dispatch]);
@@ -25,17 +41,16 @@ const Trbook = () => {
     if (error) return <p>XƏTA BAŞ VERDİ</p>;
     if (loading) return <p>Yüklənir...</p>;
 
-    // Məhsulları təkrarlamadan yalnız lazım olan hissəni götürək
+    
     const wrappedProducts = [...trproducts, ...trproducts.slice(0, itemsPerPage)];
     const visibleProducts = wrappedProducts.slice(startIndex, startIndex + itemsPerPage);
-    // Hər dəfə 1 şəkil irəli keçmək və sona çatanda yenidən başlamaq
+
     const handleNext = () => {
         if (trproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex + 1) % trproducts.length);
         }
     };
 
-    // Hər dəfə 1 şəkil geri keçmək və əvvələ çatanda sonuncuya qayıtmaq
     const handlePrev = () => {
         if (trproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex - 1 + trproducts.length) % trproducts.length);

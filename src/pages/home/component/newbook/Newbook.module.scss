@@ -33,3 +33,11 @@
         height: 40vh;
     }
 }
+@media (min-width: 577px) and (max-width: 991px) {
+    .container {
+        height: 80vh;       
+        align-items: center;
+        justify-content: center; 
+        margin-bottom: 40px;
+    }
+}

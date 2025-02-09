@@ -18,19 +18,17 @@ const Footer = () => {
                     
                     <div className={styles.mobile}>
                         <h3>Şirkət</h3>
-                        <a href="#">Haqqımızda </a>
-                        <a href="#">Əlaqə</a>
-                        <a href="#">Vakansiyalar</a>
-                        <a href="#">Sayt Xəritəsi</a>
+                        <a href="#">Haqqımızda</a>
+                        <a href="#">Necə Sifariş Edim?</a>
+                        <a href="#">Çatdırılma Şərtləri</a>
+                        <a href="#">Ödəniş Üsulları</a>
                     </div>
                     <div className={styles.hardware}>
                         <h3>Müştəri Xidməti</h3>
-                        <a href="#">Dəyişdirilmə və qaytarılma</a>
-                        <a href="#">Ödəniş və çatdırılma
-                        </a>
-                        <a href="#">Sifarişiniz haqqında
-                        </a>
-                        <a href="#">Seçilmişlər</a>
+                        <a href="#">Sifarişin Statusu</a>
+                        <a href="#">Çatdırılma və İade</a>
+                        <a href="#">Hədiyyə Kartları</a>
+                        <a href="#">Endirim və Kampaniyalar</a>
                     </div>
                     <div className={styles.izle}>
                         <h3>Sosial media hesablarımız</h3>

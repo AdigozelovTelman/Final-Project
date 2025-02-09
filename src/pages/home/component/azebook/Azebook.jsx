@@ -13,9 +13,26 @@ const Azebook = () => {
     const loading = useSelector((state) => state.products.loading);
     const error = useSelector((state) => state.products.error);
 
-    //  Aktiv şəkillərin indeksini saxlayan state
     const [startIndex, setStartIndex] = useState(0);
-    const itemsPerPage = 4; // Hər dəfə neçə şəkil göstərilsin
+    const [itemsPerPage, setItemsPerPage] = useState(4); 
+    
+    useEffect(() => {
+      
+        const updateItemsPerPage = () => {
+            if (window.innerWidth <= 576) {
+                setItemsPerPage(1); 
+            } else if (window.innerWidth <= 991) {
+                setItemsPerPage(3); 
+            } else {
+                setItemsPerPage(4); 
+            }
+        };
+
+        updateItemsPerPage();
+        window.addEventListener("resize", updateItemsPerPage); 
+
+        return () => window.removeEventListener("resize", updateItemsPerPage);
+    }, []);
 
 
     useEffect(() => {
@@ -30,12 +47,11 @@ const Azebook = () => {
     const wrappedProducts = [...products, ...products.slice(0, itemsPerPage)];
     const visibleProducts = wrappedProducts.slice(startIndex, startIndex + itemsPerPage);
 
-    //  Hər dəfə 1 şəkil irəli keçmək və sona çatanda yenidən başlamaq
+    
     const handleNext = () => {
         setStartIndex((prevIndex) => (prevIndex + 1) % products.length);
     };
 
-    // Hər dəfə 1 şəkil geri keçmək və əvvələ çatanda sonuncuya qayıtmaq
     const handlePrev = () => {
         setStartIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
     };
