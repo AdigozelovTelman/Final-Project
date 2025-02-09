@@ -50,7 +50,6 @@ const Usaqbook = () => {
         }
     };
 
-    // Hər dəfə 1 şəkil geri keçmək və əvvələ çatanda sonuncuya qayıtmaq
     const handlePrev = () => {
         if (usaqproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex - 1 + usaqproducts.length) % usaqproducts.length);
