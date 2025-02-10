@@ -49,11 +49,7 @@ const Usaqbook = () => {
             setStartIndex((prevIndex) => (prevIndex + 1) % usaqproducts.length);
         }
     };
-
-<<<<<<< HEAD
-=======
     
->>>>>>> 39e56f0 (ingBook)
     const handlePrev = () => {
         if (usaqproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex - 1 + usaqproducts.length) % usaqproducts.length);
