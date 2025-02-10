@@ -67,19 +67,14 @@
                         width: 22px;
                         height: 22px;
                         color: #4A90E2 ;
-                        transition: all 0.3s ease;
+                        transition: all 0.3s ;
                 
                         &:hover {
-                            fill: #FF5733; 
+                            color: #FF5733; 
                             transform:  rotateY(180deg);
                         }
                     }
 
-                    // &:hover {
-                    //     color: #3a2ee0;
-                    //     transition: .5s;
-                    //     transform: rotateY(180deg);
-                    // }
                 }
 
             }
@@ -173,7 +168,7 @@
     }
 }
 
-@media (max-width:576px) {
+@media (max-width:576px)  {
     .containerFooter {
         display: flex;
         flex-direction: column;

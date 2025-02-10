@@ -1,0 +1,62 @@
+.ingbook {
+    text-align: center;
+    padding: 20px;
+    // margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    h2 {
+        font-size: 30px;
+        color: #5b6c8f;
+        font-family: "Jost", sans-serif;
+    }
+
+    .sliderContainer {
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .slider {
+            display: flex;
+            gap: 20px;
+            overflow: hidden;
+            width: 90%;
+
+        }
+
+        .prevButton,
+        .nextButton {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+    }
+}
+
+@media (max-width:576px) and (min-width:200px) {
+    .ingbook {
+        margin-top: 40px;
+        h2 {
+            font-size: 30px;
+        }
+
+        .sliderContainer {
+            .slider {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            }
+        }
+    }
+}

@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
+import { FaAngleDown } from "react-icons/fa";
+
 
 const Header = () => {
     const [isOpen, setIsOpen] = React.useState(false)
@@ -38,7 +40,7 @@ const Header = () => {
                     setIsDeleting(false);
                 }
             }
-        }, 150); 
+        }, 150);
 
         return () => clearTimeout(timeout);
     }, [index, isDeleting]);
@@ -50,7 +52,7 @@ const Header = () => {
                     <div className={styles.logo}>
                         <Link to="/"> <img src={logo} alt="logo" /></Link>
                     </div>
-                     
+
                     <div className={styles.input}>
                         <input type="text" placeholder={placeholder} />
                         <button><FaSearch />
@@ -75,7 +77,7 @@ const Header = () => {
                                         <li><a href="#">Dəftərxana</a></li>
                                         <li><a href="#">Çantalar</a></li>
                                         <li><a href="#">Hədiyyəlik</a></li>
-                                        <li><a href="#">Haqqımızda</a></li>
+                                        <li><a href="/about">Haqqımızda</a></li>
                                         <li><a href="#">Onlayn ödəniş</a></li>
                                         <li><a href="#">Əlaqə</a></li>
                                     </ul>
@@ -93,12 +95,20 @@ const Header = () => {
                 <div className={styles.bottom}>
                     <div className={styles.navbar}>
                         <ul>
-                            <li><a href="#"><GiHamburgerMenu /> <span>Menu</span> </a></li>
-                            <li><a href="#">Kitablar</a></li>
+                            <li className={styles.dropdown}>
+                                <a href="#">Kitablar<FaAngleDown />
+                                </a>
+                                <ul className={styles.submenu}>
+                                    <li><a href="#">Azərbaycan</a></li>
+                                    <li><a href="#">Türk</a></li>
+                                    <li><a href="#">Rus</a></li>
+                                    <li><a href="#">İngilis</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Dəftərxana</a></li>
                             <li><a href="#">Çantalar</a></li>
                             <li><a href="#">Hədiyyəlik</a></li>
-                            <li><a href="#">Haqqımızda</a></li>
+                            <li><a href="/about">Haqqımızda</a></li>
                             <li><a href="#">Onlayn ödəniş</a></li>
                             <li><a href="#">Əlaqə</a></li>
                         </ul>

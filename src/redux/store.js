@@ -5,6 +5,7 @@ import wishlistSlice from "./reducers/wishlistSlice";
 import  trproductSlice  from "./reducers/trproductSlice";
 import  rusproductSlice  from "./reducers/rusproductSlice";
 import  usaqproductSlice  from "./reducers/usaqbookSlice";
+import  ingproductSlice  from "./reducers/ingproducts";
 
 export const store = configureStore({
     reducer:{
@@ -13,6 +14,7 @@ export const store = configureStore({
         wishlist:wishlistSlice,
         trproducts:trproductSlice,
         rusproducts:rusproductSlice,
+        ingproducts:ingproductSlice,
         usaqproducts:usaqproductSlice
     }
 })
