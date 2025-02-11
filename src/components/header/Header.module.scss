@@ -35,7 +35,7 @@
 
         .input {
             display: flex;
-            width: 35%;
+            width: 45%;
             position: relative;
 
             input {
@@ -44,7 +44,9 @@
                 height: 45px;
                 padding-left: 15px;
                 outline: none;
-                border: 2px solid black;
+                border: none;
+                background-color: #F0F2F5;
+                font-size: 15px;
             }
 
             button {
@@ -72,6 +74,21 @@
             gap: 25px;
             align-items: center;
             height: 50px;
+            a{
+                position: relative;
+                span{
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #7D4D32;
+                    color: white;
+                    border-radius: 50%;
+                    top: -12px;
+                    right: -13px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+            }
 
             .hamburger {
                 display: none;
@@ -150,8 +167,8 @@
     align-items: center;
     height: 60px;
     padding: 0;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 
     .bottom {
         display: flex;
@@ -262,9 +279,7 @@
                     display: block;
                 }
 
-                span {
-                    display: none;
-                }
+                
             }
         }
     }
@@ -305,9 +320,7 @@
                     display: block;
                 }
 
-                span {
-                    display: none;
-                }
+               
             }
         }
     }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Signup.module.scss';
 import book from '../../../../components/assets/images/book.jpg';
 import { FaEnvelope, FaUserLarge } from "react-icons/fa6";
@@ -16,17 +16,18 @@ const Signup = () => {
             password: '',
         },
         onSubmit: values => {
+            axios.post('https://northwind.vercel.app/api/categories', values);
             formik.resetForm();
         },
     });
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    const registers = useSelector(response => response.registers.registers)
+    // const registers = useSelector(response => response.registers.registers)
 
-    const register = (item) =>{
-        dispatch(postRegisterThunk(item))
-    } 
+    // const register = (item) =>{
+    //     dispatch(postRegisterThunk(item))
+    // } 
 
     return (
         <>
@@ -78,7 +79,7 @@ const Signup = () => {
                             />
                         </div>
 
-                        <button type="submit"  onClick={register} >Sign up</button>
+                        <button type="submit"   >Sign up</button>
                     </form>
                 </div>
             </div>

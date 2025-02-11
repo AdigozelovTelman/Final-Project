@@ -10,6 +10,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import { FaAngleDown } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
@@ -45,6 +46,9 @@ const Header = () => {
         return () => clearTimeout(timeout);
     }, [index, isDeleting]);
 
+    const basketCount = useSelector((state) => state.basket.basket.length);
+
+
     return (
         <>
             <div className={styles.headertop}>
@@ -59,9 +63,12 @@ const Header = () => {
                         </button>
                     </div>
                     <div className={styles.icons}>
-                        <a href="/login"><FaUser />    <span>Daxil ol</span>    </a>
-                        <a href="/wishlist"><FaHeart />  <span>Sevimlilərim</span>   </a>
-                        <a href="/basket"><FaCartShopping />   <span>Mənim Səbətim</span> </a>
+                        <a href="/login"><FaUser /></a>
+                        <a href="/wishlist"><FaHeart /></a>
+                        <a href="/basket">
+                            <FaCartShopping />
+                            <span>{basketCount}</span>
+                        </a>
                         <div className={styles.hamburger}>
                             <button onClick={toggleDrawer}><GiHamburgerMenu />
                             </button>
@@ -79,7 +86,7 @@ const Header = () => {
                                         <li><a href="#">Hədiyyəlik</a></li>
                                         <li><a href="/about">Haqqımızda</a></li>
                                         <li><a href="#">Onlayn ödəniş</a></li>
-                                        <li><a href="#">Əlaqə</a></li>
+                                        <li><a href="/adminpanel">Admin Panel</a></li>
                                     </ul>
                                 </div>
                                 <div className={styles.contact}>
@@ -110,7 +117,7 @@ const Header = () => {
                             <li><a href="#">Hədiyyəlik</a></li>
                             <li><a href="/about">Haqqımızda</a></li>
                             <li><a href="#">Onlayn ödəniş</a></li>
-                            <li><a href="#">Əlaqə</a></li>
+                            <li><a href="/adminpanel">Admin Panel</a></li>
                         </ul>
                     </div>
                     <div className={styles.contact}>

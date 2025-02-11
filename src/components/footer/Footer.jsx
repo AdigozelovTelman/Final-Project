@@ -4,7 +4,7 @@ import { IoIosCall } from "react-icons/io";
 import { IoMdMail } from "react-icons/io";
 import visa from '../assets/images/card_visa.png'
 import master from '../assets/images/card_master.png'
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaTelegram } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -33,10 +33,21 @@ const Footer = () => {
                     <div className={styles.izle}>
                         <h3>Sosial media hesablarımız</h3>
                         <div className={styles.icon}>
-                        <a href="#"><FaFacebook /></a>
-                        <a href="#"><FaInstagram /></a>
-                        <a href="#"><FaTwitter /></a>
-                        <a href="#"><FaLinkedinIn /></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                            <FaFacebook className="icon facebook" />
+                        </a>
+                        <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+                            <FaTelegram className="icon telegram" />
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                            <FaInstagram className="icon instagram" />
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                            <FaLinkedinIn className="icon linkedin" />
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                            <FaTwitter  className="icon twitter" />
+                        </a>
                         </div>
                     </div>
                 <div className={styles.contact}>

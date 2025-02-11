@@ -20,6 +20,9 @@ const Basket = () => {
   const deleteBasket = (id) => {
     dispatch(deleteBasketThunk(id))
   }
+      const count = basket.length;
+  
+
   return (
     <Layout>
       <div className={styles.container}>
