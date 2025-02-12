@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Header.module.scss'
 import logo from '../assets/images/WhatsApp_Şəkil_2025-02-03_saat_23.41.36_7e8ea673-removebg-preview.png'
 import { FaSearch } from "react-icons/fa";
@@ -47,7 +47,6 @@ const Header = () => {
     }, [index, isDeleting]);
 
     const basketCount = useSelector((state) => state.basket.basket.length);
-
 
     return (
         <>
@@ -106,7 +105,7 @@ const Header = () => {
                                 <a href="#">Kitablar<FaAngleDown />
                                 </a>
                                 <ul className={styles.submenu}>
-                                    <li><a href="#">Azərbaycan</a></li>
+                                <li><a href="#">Azərbaycan</a></li>
                                     <li><a href="#">Türk</a></li>
                                     <li><a href="#">Rus</a></li>
                                     <li><a href="#">İngilis</a></li>

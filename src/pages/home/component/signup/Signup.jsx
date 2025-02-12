@@ -80,6 +80,7 @@ const Signup = () => {
                         </div>
 
                         <button type="submit"   >Sign up</button>
+                        <p>Do you have an account? <a href="/login">Login</a></p>
                     </form>
                 </div>
             </div>

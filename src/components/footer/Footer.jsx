@@ -58,7 +58,7 @@ const Footer = () => {
                     </div>
                     <div className={styles.boxes}>
                         <a href="#"><IoMdMail />
-                        </a> <span>telmanra-sp202@code.edu.az</span>
+                        </a> <span>info@BookCenter.az</span>
                     </div>
                     <div className={styles.xerite}>
                         <a href="#">Xəritədə bax</a>
