@@ -1,24 +1,22 @@
 import React, { useEffect } from 'react'
-import styles from './Adminpanel.module.scss'
-import Layout from '../../../../components/layout/Layout'
+import styles from './Rusadminpanel.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteProductsThunk, getProductsThunk, postProductsThunk } from '../../../../redux/reducers/productSlice'
-
-
+import { deleteRusProductsThunk, getRusProductsThunk, postRusProductsThunk } from '../../../../redux/reducers/rusproductSlice'
 import { useFormik } from 'formik'
+import Layout from '../../../../components/layout/Layout'
 
+const Rusadminpanel = () => {
 
-const Adminpanel = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getProductsThunk())
+        dispatch(getRusProductsThunk())
     }, [])
 
-    const products = useSelector((state) => state.products.products) || []
+    const rusproducts = useSelector((state) => state.rusproducts.rusproducts) || []
 
     const deleteItem = (id) => {
-        dispatch(deleteProductsThunk(id))
+        dispatch(deleteRusProductsThunk(id))
     }
 
     const formik = useFormik({
@@ -28,25 +26,25 @@ const Adminpanel = () => {
             price: '',
         },
         onSubmit: values => {
-            dispatch(postProductsThunk(values))
+            dispatch(postRusProductsThunk(values))
             formik.resetForm();
         },
     });
-    
+
     return (
         <>
             <Layout>
 
-            <div className={styles.header}>
-                <div className={styles.navbar}>
-                    <ul>
-                        <li><a href="/adminpanel">Azerbaycan Admin Panel</a></li>
-                        <li><a href="/turk adminpanel">Türk Admin Panel</a></li>
-                        <li><a href="/rus adminpanel">Rus Admin Panel</a></li>
-                        <li><a href="/ingilis adminpanel">İngilis Admin Panel</a></li>
-                    </ul>
+                <div className={styles.header}>
+                    <div className={styles.navbar}>
+                        <ul>
+                            <li><a href="/adminpanel">Azerbaycan Admin Panel</a></li>
+                            <li><a href="/turk adminpanel">Türk Admin Panel</a></li>
+                            <li><a href="/rus adminpanel">Rus Admin Panel</a></li>
+                            <li><a href="/ingilis adminpanel">İngilis Admin Panel</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
                 <div className={styles.formContainer}>
                     <form onSubmit={formik.handleSubmit}>
@@ -88,14 +86,14 @@ const Adminpanel = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products && products.map(item => {
+                        {rusproducts && rusproducts.map(item => {
                             return (
                                 <tr key={item._id}>
                                     <td><img src={item.image} alt={item.title} /></td>
                                     <td>{item.title}</td>
                                     <td>{item.price}</td>
                                     <td><button onClick={() => deleteItem(item._id)}>Delete</button></td>
-                                    
+
                                 </tr>
                             );
                         })}
@@ -106,4 +104,4 @@ const Adminpanel = () => {
     )
 }
 
-export default Adminpanel;
+export default Rusadminpanel

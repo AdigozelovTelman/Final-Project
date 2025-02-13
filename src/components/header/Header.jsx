@@ -105,10 +105,10 @@ const Header = () => {
                                 <a href="#">Kitablar<FaAngleDown />
                                 </a>
                                 <ul className={styles.submenu}>
-                                <li><a href="#">Azərbaycan</a></li>
-                                    <li><a href="#">Türk</a></li>
-                                    <li><a href="#">Rus</a></li>
-                                    <li><a href="#">İngilis</a></li>
+                                <li><a href="/azerbaycan kitablari">Azərbaycan</a></li>
+                                    <li><a href="/turk kitablari">Türk</a></li>
+                                    <li><a href="/rus kitablari">Rus</a></li>
+                                    <li><a href="/ingilis kitablari">İngilis</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Dəftərxana</a></li>
