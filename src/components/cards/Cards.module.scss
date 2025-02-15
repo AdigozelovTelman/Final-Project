@@ -89,17 +89,32 @@
         .imgBox{
             height: 40vh;
             width: 85%;
+            img{
+                height: 100%;
+            }
         }
     }
 }
 
 @media (min-width: 577px) and (max-width: 991px) {
     .container {
-        width: 30%; 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .imgBox{
+            height: 40vh;
+            width: 90%;
+            img{
+                height: 80%;
+            }
         }
     }
 }
+
+// @media (min-width: 577px) and (max-width: 991px) {
+//     .container {
+//         width: 30%; 
+//         .cards {
+//             display: grid;
+//             grid-template-columns: repeat(3, 1fr);
+//             gap: 20px;
+//         }
+//     }
+// }

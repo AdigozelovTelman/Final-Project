@@ -4,17 +4,39 @@ import React from 'react';
 import styles from './Login.module.scss';
 import book from '../../components/assets/images/book.jpg';
 import { FaUserLarge } from "react-icons/fa6";
-import { FaLock } from "react-icons/fa"; 
+import { FaLock } from "react-icons/fa";
+
 
 const Login = () => {
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZhNjQ2N2Q2MmVkYmQ1ZTFlYjNiYiIsImlhdCI6MTczOTU2NDYzMywiZXhwIjoxNzQyMTU2NjMzfQ.JMh0CpJePeCOkiqD3IjgsN9SetjahKXPHReMqdQ9h2A"
     const formik = useFormik({
         initialValues: {
             username: '',
             password: '',
         },
-        onSubmit: values => {
-            axios.post('https://northwind.vercel.app/api/categories', values);
-            formik.resetForm();
+        onSubmit: async (values) => {
+            try {
+                const response = await axios.post(
+                    "http://localhost:5000/users/login",
+                    values,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        withCredentials: true, // Cookie-ləri backend-ə göndərmək üçün
+                    }
+                );
+
+                // Token-i localStorage-da saxlayırıq
+                localStorage.setItem("token", response.data.token);
+                alert("Login uğurla tamamlandı!");
+
+                formik.resetForm();
+            } catch (error) {
+                console.error("Login xətası:", error.response?.data?.message || error);
+                alert("Giriş uğursuz oldu! Yenidən yoxlayın.");
+            }
         },
     });
 
@@ -30,8 +52,8 @@ const Login = () => {
 
                         <label htmlFor="username">User Name</label>
                         <div className={styles.inputWrapper}>
-                            <FaUserLarge/>
-                            <input 
+                            <FaUserLarge />
+                            <input
                                 placeholder='Type your username'
                                 id="username"
                                 name="username"
@@ -41,11 +63,11 @@ const Login = () => {
                             />
                         </div>
 
-                        
+
                         <label htmlFor="password">Password</label>
                         <div className={styles.inputWrapper}>
                             <FaLock />
-                            <input 
+                            <input
                                 placeholder='Type your password'
                                 id="password"
                                 name="password"
