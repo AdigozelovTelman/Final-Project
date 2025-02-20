@@ -3,12 +3,12 @@ import styles from './Adminpanel.module.scss'
 import Layout from '../../../../components/layout/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProductsThunk, getProductsThunk, postProductsThunk } from '../../../../redux/reducers/productSlice'
-
-
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 
 
 const Adminpanel = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -32,21 +32,21 @@ const Adminpanel = () => {
             formik.resetForm();
         },
     });
-    
+
     return (
         <>
             <Layout>
 
-            <div className={styles.header}>
-                <div className={styles.navbar}>
-                    <ul>
-                        <li><a href="/adminpanel">Azerbaycan Admin Panel</a></li>
-                        <li><a href="/turk adminpanel">Türk Admin Panel</a></li>
-                        <li><a href="/rus adminpanel">Rus Admin Panel</a></li>
-                        <li><a href="/ingilis adminpanel">İngilis Admin Panel</a></li>
-                    </ul>
+                <div className={styles.header}>
+                    <div className={styles.navbar}>
+                        <ul>
+                            <li> <button onClick={() => navigate('/adminpanel')} >Azerbaycan Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/turk adminpanel')} >Türk Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/rus adminpanel')} >Rus Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/ingilis adminpanel')} >İngilis Admin Panel</button></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
                 <div className={styles.formContainer}>
                     <form onSubmit={formik.handleSubmit}>
@@ -78,32 +78,22 @@ const Adminpanel = () => {
                     </form>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Price</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products && products.map(item => {
-                            return (
-                                <tr key={item._id}>
-                                    <td><img src={item.image} alt={item.title} /></td>
-                                    <td>{item.title}</td>
-                                    <td>{item.price}</td>
-                                    <td><button onClick={() => deleteItem(item._id)}>Delete</button></td>
-                                    
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+
+                <div className={styles.cards}>
+                    {products && products.map(item => {
+                        return <div className={styles.card}>
+                            <img src={item.image} alt={item.title} />
+                            <p>{item.title}</p>
+                            <p>{item.price}</p>
+                            <button onClick={() => deleteItem(item._id)}>Delete</button>
+                        </div>
+                    })}
+                </div>
+
             </Layout>
         </>
     )
 }
+
 
 export default Adminpanel;

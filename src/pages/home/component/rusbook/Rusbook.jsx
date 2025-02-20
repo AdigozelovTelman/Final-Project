@@ -42,18 +42,15 @@ const Rusbook = () => {
     if (error) return <p>XƏTA BAŞ VERDİ</p>;
     if (loading) return <p>Yüklənir...</p>;
 
-    // Məhsulları təkrarlamadan yalnız lazım olan hissəni götürək
     const wrappedProducts = [...rusproducts, ...rusproducts.slice(0, itemsPerPage)];
     const visibleProducts = wrappedProducts.slice(startIndex, startIndex + itemsPerPage);
 
-    // Hər dəfə 1 şəkil irəli keçmək və sona çatanda yenidən başlamasi
     const handleNext = () => {
         if (rusproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex + 1) % rusproducts.length);
         }
     };
 
-    // Hər dəfə 1 şəkil geri keçmək və əvvələ çatanda sonuncuya qayıtmasi
     const handlePrev = () => {
         if (rusproducts.length > 0) {
             setStartIndex((prevIndex) => (prevIndex - 1 + rusproducts.length) % rusproducts.length);
@@ -80,7 +77,7 @@ const Rusbook = () => {
 
                 <div className={styles.slider}>
                     {visibleProducts.map((item) => (
-                        <Cards key={item.id} item={item} addBasket={() => addBasket(item)} addwishlist={() => addWishlist(item)} />
+                        <Cards key={item._id} item={item} addBasket={() => addBasket(item)} addwishlist={() => addWishlist(item)} />
                     ))}
                 </div>
 

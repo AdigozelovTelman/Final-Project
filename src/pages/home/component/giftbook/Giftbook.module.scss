@@ -1,0 +1,137 @@
+// Əsas dəyişənlər
+$primary-color: #4CAF50;
+$secondary-color: #388E3C;
+$border-color: #ccc;
+$border-radius: 10px;
+$font-family: Arial, sans-serif;
+
+// Tətbiq əsas container
+.giftItemsContainer {
+  text-align: center;
+  font-family: $font-family;
+  padding: 20px;
+  background-color: #f9f9f9;
+
+  h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+// Hədiyyə əşyaların siyahısı
+.itemsList {
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  // Hər bir əşya kartı
+  .itemCard {
+    border: 1px solid $border-color;
+    padding: 20px;
+    border-radius: $border-radius;
+    width: 200px;
+    text-align: left;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .itemImage {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+// Seçilmiş əşya haqqında məlumat
+.selectedItem {
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  width: 300px;
+  text-align: left;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+  }
+
+  .selectedItemImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 14px;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+}

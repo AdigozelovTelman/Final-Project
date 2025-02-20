@@ -18,6 +18,16 @@ export const deleteBasketThunk = createAsyncThunk('api/deletebasket', async(id)=
     return id
 })
 
+export const increaseQuantityThunk = createAsyncThunk('api/increaseQuantity', async (id) => {
+    const response = await axios.patch(`http://localhost:5000/basket/increase/${id}`);
+    return response.data;
+});
+
+export const decreaseQuantityThunk = createAsyncThunk('api/decreaseQuantity', async (id) => {
+    const response = await axios.patch(`http://localhost:5000/basket/decrease/${id}`);
+    return response.data;
+});
+
 export const basketSlice = createSlice({
     name:'basket',
     initialState:{
@@ -38,8 +48,20 @@ export const basketSlice = createSlice({
         })   
         //delete
         .addCase(deleteBasketThunk.fulfilled, (state, action)=>{
-            state.basket = state.basket.filter((item)=>item._id  !== action.payload)
+            state.basket = state.basket.filter((item)=>item._id !== action.payload)
         })
+        .addCase(increaseQuantityThunk.fulfilled, (state, action) => {
+            const item = state.basket.find((item) => item._id === action.payload._id);
+            if (item) {
+                item.quantity = action.payload.quantity;
+            }
+        })
+        .addCase(decreaseQuantityThunk.fulfilled, (state, action) => {
+            const item = state.basket.find((item) => item._id === action.payload._id);
+            if (item) {
+                item.quantity = action.payload.quantity;
+            }
+        });
     }
 })
 

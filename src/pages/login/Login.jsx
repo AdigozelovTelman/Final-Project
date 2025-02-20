@@ -24,11 +24,10 @@ const Login = () => {
                             "Content-Type": "application/json",
                             "Authorization": `Bearer ${token}`
                         },
-                        withCredentials: true, // Cookie-ləri backend-ə göndərmək üçün
+                        withCredentials: true, 
                     }
                 );
 
-                // Token-i localStorage-da saxlayırıq
                 localStorage.setItem("token", response.data.token);
                 alert("Login uğurla tamamlandı!");
 

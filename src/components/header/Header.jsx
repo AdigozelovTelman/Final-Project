@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -14,6 +14,16 @@ import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+    const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/search?query=${searchQuery}`);
+        }
+    };
+
     const [isOpen, setIsOpen] = React.useState(false)
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
@@ -25,28 +35,29 @@ const Header = () => {
     const [isDeleting, setIsDeleting] = useState(false);
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (!isDeleting) {
-                if (index < fullText.length) {
-                    setPlaceholder(fullText.slice(0, index + 1));
-                    setIndex(index + 1);
+        const interval = setInterval(() => {
+            setPlaceholder((prev) => {
+                if (!isDeleting && index < fullText.length) {
+                    setIndex((prevIndex) => prevIndex + 1);
+                    return fullText.slice(0, index + 1);
+                } else if (isDeleting && index > 0) {
+                    setIndex((prevIndex) => prevIndex - 1);
+                    return fullText.slice(0, index - 1);
                 } else {
-                    setTimeout(() => setIsDeleting(true), 3000);
+                    setIsDeleting(!isDeleting);
+                    return prev;
                 }
-            } else {
-                if (index > 0) {
-                    setPlaceholder(fullText.slice(0, index - 1));
-                    setIndex(index - 1);
-                } else {
-                    setIsDeleting(false);
-                }
-            }
+            });
         }, 150);
 
-        return () => clearTimeout(timeout);
+        return () => clearInterval(interval);
     }, [index, isDeleting]);
 
+
+    // const basket = useSelector((state) => state.basket.basket || []);
+
     const basketCount = useSelector((state) => state.basket.basket.length);
+
 
     return (
         <>
@@ -57,17 +68,23 @@ const Header = () => {
                     </div>
 
                     <div className={styles.input}>
-                        <input type="text" placeholder={placeholder} />
-                        <button><FaSearch />
-                        </button>
+                        <input
+                            type="text"
+                            placeholder="Növbəti kitabınızı axtarın"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
+                        />
+                        <button onClick={handleSearch}><FaSearch /></button>
                     </div>
                     <div className={styles.icons}>
-                        <a href="/login"><FaUser /></a>
-                        <a href="/wishlist"><FaHeart /></a>
-                        <a href="/basket">
-                            <FaCartShopping />
-                            <span>{basketCount}</span>
-                        </a>
+                        <FaUser onClick={() => navigate('/login')} />
+                        <FaHeart onClick={() => navigate('/wishlist')} />
+                        <div className={styles.iconWrapper}>
+                            <FaCartShopping onClick={() => navigate('/basket')} />
+                            {basketCount > 0 && <span>{basketCount}</span>}
+                        </div>
+
                         <div className={styles.hamburger}>
                             <button onClick={toggleDrawer}><GiHamburgerMenu />
                             </button>
@@ -79,13 +96,20 @@ const Header = () => {
                             >
                                 <div className={styles.menu}>
                                     <ul>
-                                        <li><a href="#">Kitablar</a></li>
-                                        <li><a href="#">Dəftərxana</a></li>
-                                        <li><a href="#">Çantalar</a></li>
-                                        <li><a href="#">Hədiyyəlik</a></li>
-                                        <li><a href="/about">Haqqımızda</a></li>
-                                        <li><a href="#">Onlayn ödəniş</a></li>
-                                        <li><a href="/adminpanel">Admin Panel</a></li>
+                                        <li className={styles.dropdown}>
+                                            <button>Kitablar<FaAngleDown /></button>
+                                            <ul className={styles.submenu}>
+                                                <li> <button onClick={() => navigate('/azerbaycan kitablari')}> Azərbaycan</button> </li>
+                                                <li> <button onClick={() => navigate('/turk kitablari')}>Türk</button> </li>
+                                                <li> <button onClick={() => navigate('/rus kitablari')}>Rus</button> </li>
+                                                <li> <button onClick={() => navigate('/ingilis kitablari')}>İngilis</button> </li>
+                                            </ul>
+                                        </li>
+                                        <li> <button> Dəftərxana</button></li>
+                                        <li> <button> Çantalar</button></li>
+                                        <li> <button onClick={() => navigate('/giftbook')}> Hədiyyəlik</button></li>
+                                        <li> <button onClick={() => navigate('/about')}> Haqqımızda</button></li>
+                                        <li> <button onClick={() => navigate('/payment')}> Onlayn ödəniş</button></li>
                                     </ul>
                                 </div>
                                 <div className={styles.contact}>
@@ -102,21 +126,20 @@ const Header = () => {
                     <div className={styles.navbar}>
                         <ul>
                             <li className={styles.dropdown}>
-                                <a href="#">Kitablar<FaAngleDown />
-                                </a>
+                                <button>Kitablar<FaAngleDown /></button>
+
                                 <ul className={styles.submenu}>
-                                <li><a href="/azerbaycan kitablari">Azərbaycan</a></li>
-                                    <li><a href="/turk kitablari">Türk</a></li>
-                                    <li><a href="/rus kitablari">Rus</a></li>
-                                    <li><a href="/ingilis kitablari">İngilis</a></li>
+                                    <li> <button onClick={() => navigate('/azerbaycan kitablari')}> Azərbaycan</button> </li>
+                                    <li> <button onClick={() => navigate('/turk kitablari')}>Türk</button> </li>
+                                    <li> <button onClick={() => navigate('/rus kitablari')}>Rus</button> </li>
+                                    <li> <button onClick={() => navigate('/ingilis kitablari')}>İngilis</button> </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Dəftərxana</a></li>
-                            <li><a href="#">Çantalar</a></li>
-                            <li><a href="#">Hədiyyəlik</a></li>
-                            <li><a href="/about">Haqqımızda</a></li>
-                            <li><a href="#">Onlayn ödəniş</a></li>
-                            <li><a href="/adminpanel">Admin Panel</a></li>
+                            <li> <button>Dəftərxana</button></li>
+                            <li> <button>Çantalar</button></li>
+                            <li> <button onClick={() => navigate('/giftbook')}>Hədiyyəlik</button> </li>
+                            <li> <button onClick={() => navigate('/about')}>Haqqımızda</button></li>
+                            <li> <button onClick={() => navigate('/payment')}> Onlayn ödəniş</button></li>
                         </ul>
                     </div>
                     <div className={styles.contact}>

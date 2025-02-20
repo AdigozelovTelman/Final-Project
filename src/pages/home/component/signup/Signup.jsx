@@ -9,17 +9,44 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postRegisterThunk } from '../../../../redux/reducers/registerSlice';
 
 const Signup = () => {
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZhNjQ2N2Q2MmVkYmQ1ZTFlYjNiYiIsImlhdCI6MTczOTU2NDYzMywiZXhwIjoxNzQyMTU2NjMzfQ.JMh0CpJePeCOkiqD3IjgsN9SetjahKXPHReMqdQ9h2A"
     const formik = useFormik({
         initialValues: {
             username: '',
             email: '',
             password: '',
         },
-        onSubmit: values => {
-            axios.post('https://northwind.vercel.app/api/categories', values);
-            formik.resetForm();
+        onSubmit: async (values) => {
+            try {
+                const response = await axios.post(
+                    "http://localhost:5000/users/login",
+                    values,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        withCredentials: true, 
+                    }
+                );
+
+                localStorage.setItem("token", response.data.token);
+                alert("Login uğurla tamamlandı!");
+
+                formik.resetForm();
+            } catch (error) {
+                if (error.response) {
+                    console.error("Xəta:", error.response.data);
+                    alert(error.response.data.message || "Bu email artıq istifadə olunub.");
+                } else {
+                    console.error("Xəta:", error);
+                    alert("Giriş uğursuz oldu! Yenidən yoxlayın.");
+                }
+                
+            }
         },
     });
+
 
     // const dispatch = useDispatch()
 

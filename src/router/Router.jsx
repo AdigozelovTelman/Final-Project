@@ -15,6 +15,9 @@ import Ruskitablar from '../pages/home/component/ruskitablar/Ruskitablar'
 import Turkadminpanel from '../pages/home/component/turkadminpanel/Turkadminpanel'
 import Rusadminpanel from '../pages/home/component/rusadminpanel/Rusadminpanel'
 import Ingilisadminpanel from '../pages/home/component/ingilisadminpanel/Ingilisadminpanel'
+import SearchResults from '../pages/home/component/searchresults/SearchResults'
+import Payment from '../pages/home/component/payment/Payment'
+import Giftbook from '../pages/home/component/giftbook/Giftbook'
 
 const Router = () => {
   return (
@@ -35,6 +38,9 @@ const Router = () => {
             <Route path='/turk adminpanel' element={<Turkadminpanel/>}/>
             <Route path='/rus adminpanel' element={<Rusadminpanel/>}/>
             <Route path='/ingilis adminpanel' element={<Ingilisadminpanel/>}/>
+            <Route path='/search' element={<SearchResults/>}/>
+            <Route path='/payment' element={<Payment/>}/>
+            <Route path='/giftbook' element={<Giftbook/>}/>
 
         </Routes>
     </BrowserRouter>

@@ -17,6 +17,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
+
     .container {
         display: flex;
         justify-content: space-between;
@@ -68,26 +69,40 @@
                 }
             }
         }
-
         .icons {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
-            height: 50px;
-            a{
+
+            svg {
+                font-size: 16px;
+                cursor: pointer;
+                color: #5b6c8f;
+
+                &:hover {
+                    color: #ff9923;
+                    transition: .5s;
+                }
+
+            }
+            .iconWrapper {
                 position: relative;
-                span{
+                display: inline-block;
+
+                span {
                     position: absolute;
-                    width: 20px;
-                    height: 20px;
+                    top: -10px;
+                    right: -10px;
                     background-color: #7D4D32;
                     color: white;
                     border-radius: 50%;
-                    top: -12px;
-                    right: -13px;
-                    text-align: center;
+                    width: 20px;
+                    height: 20px;
                     font-size: 14px;
+                    text-align: center;
+                    line-height: 20px;
                 }
+
             }
 
             .hamburger {
@@ -114,13 +129,59 @@
                         list-style: none;
 
                         li {
-                            a {
+                            button {
                                 text-decoration: none;
                                 color: #5b6c8f;
-
+                                cursor: pointer;
+                                
                                 &:hover {
                                     color: #ff9923;
                                     transition: .5s;
+                                }
+                            }
+                        }
+                        .dropdown {
+                            position: relative;
+        
+                            &:hover {
+                                .submenu {
+                                    display: block;
+                                }
+                            }
+        
+                            button {
+                                text-decoration: none;
+                                padding: 5px;
+                                display: flex;
+                                gap: 2px;
+                            }
+        
+                            .submenu {
+                                display: none;
+                                position: absolute;
+                                top: 100%;
+                                left: 0;
+                                background: #fff;
+                                border: 1px solid #ddd;
+                                list-style: none;
+                                padding: 0;
+                                margin: 0;
+                                width: 150px;
+                                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                                z-index: 1;
+        
+                                li {
+                                    button {
+                                        display: block;
+                                        width: 100%;
+                                        padding: 8px 12px;
+                                        transition: background 0.3s;
+                                        text-align: start;
+                                        cursor: pointer;
+                                        &:hover {
+                                            background: #f4f4f4;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -138,7 +199,7 @@
 
             }
 
-            a {
+            button {
                 text-decoration: none;
                 color: #5b6c8f;
                 display: flex;
@@ -190,7 +251,7 @@
                 li {
                     list-style: none;
 
-                    a {
+                    button {
                         display: flex;
                         align-items: center;
                         gap: 10px;
@@ -198,29 +259,34 @@
                         font-size: 17px;
                         font-family: "Fira Sans";
                         color: #5b6c8f;
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
 
                         &:hover {
                             color: #ff9923;
                             transition: .5s;
                         }
-                        
+
                     }
                 }
+
                 .dropdown {
                     position: relative;
+
                     &:hover {
                         .submenu {
                             display: block;
                         }
                     }
-                
-                    a {
+
+                    button {
                         text-decoration: none;
                         padding: 5px;
                         display: flex;
                         gap: 2px;
                     }
-                
+
                     .submenu {
                         display: none;
                         position: absolute;
@@ -236,11 +302,13 @@
                         z-index: 1;
 
                         li {
-                            a {
+                            button {
                                 display: block;
+                                width: 100%;
                                 padding: 8px 12px;
                                 transition: background 0.3s;
-                
+                                text-align: start;
+                                cursor: pointer;
                                 &:hover {
                                     background: #f4f4f4;
                                 }
@@ -279,17 +347,18 @@
                     display: block;
                 }
 
-                
+
             }
         }
     }
 
     .headerbottom {
-       display: none;
+        display: none;
 
         .bottom {
             .navbar {
                 display: none;
+
                 ul {
                     display: none;
                 }
@@ -320,17 +389,17 @@
                     display: block;
                 }
 
-               
+
             }
         }
     }
 
     .headerbottom {
-       display: none;
+        display: none;
 
         .bottom {
             .navbar {
-                
+
                 ul {
                     display: none;
                 }
@@ -342,3 +411,6 @@
         }
     }
 }
+
+
+

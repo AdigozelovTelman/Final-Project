@@ -18,27 +18,15 @@ const Azekitablar = () => {
   return (
     <>
         <Layout>
-        <table>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products && products.map(item => {
-                            return (
-                                <tr key={item._id}>
-                                    <td><img src={item.image} alt={item.title} /></td>
-                                    <td>{item.title}</td>
-                                    <td>{item.price}</td>
-                                    
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+        <div className={styles.cards}>
+                    {products && products.map(item => {
+                        return <div className={styles.card}>
+                            <img src={item.image} alt={item.title} />
+                            <p>{item.title}</p>
+                            <p>{item.price}</p>
+                        </div>
+                    })}
+                </div>
         </Layout>
     </>
   )

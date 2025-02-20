@@ -77,7 +77,7 @@ const Trbook = () => {
 
                 <div className={styles.slider}>
                     {visibleProducts.map((item) => (
-                        <Cards key={item.id} item={item} addBasket={() => addBasket(item)} addwishlist={() => addWishlist(item)} />
+                        <Cards key={item._id} item={item} addBasket={() => addBasket(item)} addwishlist={() => addWishlist(item)} />
                     ))}
                 </div>
 

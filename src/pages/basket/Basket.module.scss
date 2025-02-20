@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    
     .cards {
         margin-top: 20px;
         justify-content: center;
@@ -14,8 +15,9 @@
         width: 100%;
         
         .card {
-            height: 65vh;
+            height: 66vh;
             display: flex;
+            gap: 5px;
             flex-direction: column;
             align-items: center;
             padding-top: 20px;
@@ -26,7 +28,7 @@
 
             .imgBox {
                 width: 80%;
-                height: 40vh;
+                height: 35vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -54,6 +56,37 @@
                 color: #4D669B;
             }
 
+            .count {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                button {
+                  background-color: #007bff;
+                  color: white;
+                  border: none;
+                  font-size: 14px;
+                  cursor: pointer;
+                  border-radius: 50%;
+                  transition: background-color 0.3s ease, transform 0.2s ease;
+                  width: 35px;
+                  height: 35px;
+                  
+                  &:hover {
+                    background-color: #0056b3;
+                    transform: scale(1.05);
+                  }
+                }
+              
+                span {
+                  font-size: 18px;
+                  font-weight: bold;
+                  min-width: 10px;
+                  text-align: center;
+                }
+              }
+              
+
             button {
                 background-color: #4D669B;
                 color: white;
@@ -62,12 +95,15 @@
                 border-radius: 10px;
                 cursor: pointer;
                 border: none;
+                transition: background-color 0.3s ease, transform 0.2s ease;
 
+                &:hover {
+                    background-color: #3b4e77;  
+                    transform: scale(1.05)
+                }
             }
         }
     }
-
-
 }
 
 @media (max-width:576px) {

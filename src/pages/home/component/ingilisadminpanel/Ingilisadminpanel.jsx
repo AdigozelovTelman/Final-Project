@@ -4,8 +4,10 @@ import styles from './Ingilisadminpanel.module.scss'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteIngProductsThunk, getIngProductsThunk, postIngProductsThunk } from '../../../../redux/reducers/ingproducts'
+import { useNavigate } from 'react-router-dom'
 
 const Ingilisadminpanel = () => {
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -35,13 +37,13 @@ const Ingilisadminpanel = () => {
         <>
             <Layout>
 
-                <div className={styles.header}>
+            <div className={styles.header}>
                     <div className={styles.navbar}>
                         <ul>
-                            <li><a href="/adminpanel">Azerbaycan Admin Panel</a></li>
-                            <li><a href="/turk adminpanel">Türk Admin Panel</a></li>
-                            <li><a href="/rus adminpanel">Rus Admin Panel</a></li>
-                            <li><a href="/ingilis adminpanel">İngilis Admin Panel</a></li>
+                            <li> <button onClick={() => navigate('/adminpanel')} >Azerbaycan Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/turk adminpanel')} >Türk Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/rus adminpanel')} >Rus Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/ingilis adminpanel')} >İngilis Admin Panel</button></li>
                         </ul>
                     </div>
                 </div>
@@ -76,29 +78,16 @@ const Ingilisadminpanel = () => {
                     </form>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Price</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {ingproducts && ingproducts.map(item => {
-                            return (
-                                <tr key={item._id}>
-                                    <td><img src={item.image} alt={item.title} /></td>
-                                    <td>{item.title}</td>
-                                    <td>{item.price}</td>
-                                    <td><button onClick={() => deleteItem(item._id)}>Delete</button></td>
-
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <div className={styles.cards}>
+                    {ingproducts && ingproducts.map(item => {
+                        return <div className={styles.card}>
+                            <img src={item.image} alt={item.title} />
+                            <p>{item.title}</p>
+                            <p>{item.price}</p>
+                            <button onClick={() => deleteItem(item._id)}>Delete</button>
+                        </div>
+                    })}
+                </div>
             </Layout>
         </>
     )

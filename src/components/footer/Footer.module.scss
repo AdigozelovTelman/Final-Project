@@ -6,7 +6,6 @@
 
 .containerFooter {
     border-top: 1px solid #dedfe2;
-    margin-top: 40px;
     display: flex;
     align-items: center;
     height: 50vh;
@@ -36,9 +35,24 @@
             }
 
             a {
+                font-size: 16px;
                 text-decoration: none;
                 color: gray;
-
+                background-color: transparent;
+                border: none; 
+                cursor: pointer;
+                &:hover {
+                    color: #3a2ee0;
+                    transition: .3s;
+                }
+            }
+            button{
+                font-size: 15px;
+                text-decoration: none;
+                color: gray;
+                background-color: transparent;
+                border: none; 
+                cursor: pointer;
                 &:hover {
                     color: #3a2ee0;
                     transition: .3s;

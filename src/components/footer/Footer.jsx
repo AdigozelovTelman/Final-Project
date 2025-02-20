@@ -8,9 +8,11 @@ import { FaFacebook, FaTelegram } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 
 const Footer = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className={styles.containerFooter}>
@@ -18,10 +20,10 @@ const Footer = () => {
                     
                     <div className={styles.mobile}>
                         <h3>Şirkət</h3>
-                        <a href="#">Haqqımızda</a>
-                        <a href="#">Necə Sifariş Edim?</a>
-                        <a href="#">Çatdırılma Şərtləri</a>
-                        <a href="#">Ödəniş Üsulları</a>
+                        <button onClick={()=> navigate('/about')}>Haqqımızda</button>
+                        <button onClick={()=> navigate('')}>Necə Sifariş Edim?</button>
+                        <button onClick={()=> navigate('')}>Çatdırılma Şərtləri</button>
+                        <button onClick={()=> navigate('')}>Ödəniş Üsulları</button>
                     </div>
                     <div className={styles.hardware}>
                         <h3>Müştəri Xidməti</h3>
@@ -59,9 +61,6 @@ const Footer = () => {
                     <div className={styles.boxes}>
                         <a href="#"><IoMdMail />
                         </a> <span>info@BookCenter.az</span>
-                    </div>
-                    <div className={styles.xerite}>
-                        <a href="#">Xəritədə bax</a>
                     </div>
 
                 </div>

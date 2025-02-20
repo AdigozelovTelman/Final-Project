@@ -1,6 +1,6 @@
 .header {
   background-color: #222;
-  padding: 15px 0;
+  padding: 10px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   .navbar {
@@ -17,19 +17,21 @@
       gap: 30px;
 
       li {
-        a {
+        button {
           text-decoration: none;
           color: #fff;
+          background-color: #222222;
           font-size: 18px;
           font-weight: 600;
           padding: 10px 15px;
           border-radius: 5px;
+          border: none;
           transition: all 0.3s ease-in-out;
+          cursor: pointer;
 
           &:hover {
             background-color: #ff6600;
             color: #fff;
-            transform: scale(1.1);
           }
         }
       }
@@ -83,35 +85,65 @@
         }
     }
 }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    
-    th, td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-        img{
-            width: 45%;
-            height: 200px;
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+  
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      img {
+        width: 300px;
+        height: 330px;
+      }
+  
+      p {
+        padding: 10px;
+        margin: 0;
+        font-size: 14px;
+        color: #333;
+  
+        &:first-of-type {
+          font-weight: bold;
         }
-    }
-
-    th {
-        background-color: #f1f1f1;
-    }
-
-    button {
-        background-color: #dc3545;
+      }
+  
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #292424;
         color: white;
         border: none;
-        padding: 5px 10px;
         cursor: pointer;
-        
+        font-size: 14px;
+        transition: background-color 0.2s ease-in-out;
+  
         &:hover {
-            background-color: #c82333;
+          background-color: #ac2522;
         }
+      }
     }
+  }
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
+
