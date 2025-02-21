@@ -1,118 +1,139 @@
-import axios from 'axios';
-import { useFormik } from 'formik';
-import React from 'react';
-import styles from './Signup.module.scss';
-import book from '../../../../components/assets/images/book.jpg';
-import { FaEnvelope, FaUserLarge } from "react-icons/fa6";
-import { FaLock } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
-import { postRegisterThunk } from '../../../../redux/reducers/registerSlice';
+import React from "react";
+import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import styles from './Signup.module.scss'
+
+import * as Yup from "yup";
+import { registerThunk } from "../../../../redux/reducers/authSlice";
+
+// Form validasiya sxemi
+const validationSchema = Yup.object({
+  name: Yup.string().required("Ad tələb olunur"),
+  surname: Yup.string().required("Soyad tələb olunur"),
+  username: Yup.string().required("İstifadəçi adı tələb olunur"),
+  email: Yup.string().email("Düzgün email daxil edin").required("Email tələb olunur"),
+  password: Yup.string().min(6, "Şifrə ən azı 6 simvol olmalıdır").required("Şifrə tələb olunur"),
+});
 
 const Signup = () => {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZhNjQ2N2Q2MmVkYmQ1ZTFlYjNiYiIsImlhdCI6MTczOTU2NDYzMywiZXhwIjoxNzQyMTU2NjMzfQ.JMh0CpJePeCOkiqD3IjgsN9SetjahKXPHReMqdQ9h2A"
-    const formik = useFormik({
-        initialValues: {
-            username: '',
-            email: '',
-            password: '',
-        },
-        onSubmit: async (values) => {
-            try {
-                const response = await axios.post(
-                    "http://localhost:5000/users/login",
-                    values,
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`
-                        },
-                        withCredentials: true, 
-                    }
-                );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isFetching, isError, errorMessage } = useSelector((state) => state.auth);
+  const goLogin = () => {
+    navigate('/login')
+  }
 
-                localStorage.setItem("token", response.data.token);
-                alert("Login uğurla tamamlandı!");
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      surname: "",
+      username: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      try {
+        const response = await dispatch(registerThunk(values)).unwrap();
+        if (response._id) {
+          alert("Qeydiyyat uğurla tamamlandı!");
+          navigate("/login"); // Login səhifəsinə yönləndir
+        }
+      } catch (error) {
+        console.error("Qeydiyyat xətası:", error); // Xəta mesajını konsola yaz
+      }
+    },
+  });
 
-                formik.resetForm();
-            } catch (error) {
-                if (error.response) {
-                    console.error("Xəta:", error.response.data);
-                    alert(error.response.data.message || "Bu email artıq istifadə olunub.");
-                } else {
-                    console.error("Xəta:", error);
-                    alert("Giriş uğursuz oldu! Yenidən yoxlayın.");
-                }
-                
-            }
-        },
-    });
+  return (
+    <div className={styles.registerContainer}>
+      <form className={styles.registerForm} onSubmit={formik.handleSubmit}>
+        <h2>Qeydiyyat</h2>
 
+        {/* Ad və Soyad yan-yana */}
+        <div className={styles.nameFields}>
+          <div>
+            <label htmlFor="name">Ad</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              placeholder="Adınızı daxil edin"
+            />
+            {formik.errors.name && (
+              <div className={styles.error}>{formik.errors.name}</div>
+            )}
+          </div>
+          <div>
+            <label htmlFor="surname">Soyad</label>
+            <input
+              id="surname"
+              name="surname"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.surname}
+              placeholder="Soyadınızı daxil edin"
+            />
+            {formik.errors.surname && (
+              <div className={styles.error}>{formik.errors.surname}</div>
+            )}
+          </div>
+        </div>
 
-    // const dispatch = useDispatch()
+        <label htmlFor="username">İstifadəçi adı</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.username}
+          placeholder="İstifadəçi adınızı daxil edin"
+        />
+        {formik.errors.username && (
+          <div className={styles.error}>{formik.errors.username}</div>
+        )}
 
-    // const registers = useSelector(response => response.registers.registers)
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="Emailinizi daxil edin"
+        />
+        {formik.errors.email && (
+          <div className={styles.error}>{formik.errors.email}</div>
+        )}
 
-    // const register = (item) =>{
-    //     dispatch(postRegisterThunk(item))
-    // } 
+        <label htmlFor="password">Şifrə</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          placeholder="Şifrənizi daxil edin"
+        />
+        {formik.errors.password && (
+          <div className={styles.error}>{formik.errors.password}</div>
+        )}
 
-    return (
-        <>
-            <div className={styles.container}>
-                <div className={styles.form}>
-                    <div className={styles.image}>
-                        <img src={book} alt="kitab" />
-                    </div>
-                    <form onSubmit={formik.handleSubmit}>
-                        <h2>Signup Form</h2>
+        <button type="submit" disabled={isFetching}>
+          {isFetching ? "Qeydiyyat davam edir..." : "Qeydiyyat"}
+        </button>
 
-                        <label htmlFor="username">User Name</label>
-                        <div className={styles.inputWrapper}>
-                            <FaUserLarge />
-                            <input
-                                placeholder='Type your username'
-                                id="username"
-                                name="username"
-                                type="text"
-                                onChange={formik.handleChange}
-                                value={formik.values.username}
-                            />
-                        </div>
+        {isError && <div className={styles.error}>{errorMessage}</div>}
 
-                        <label htmlFor="email">Email</label>
-                        <div className={styles.inputWrapper}>
-                            <FaEnvelope />
-                            <input
-                                placeholder='Type your email'
-                                id="email"
-                                name="email"
-                                type="email"
-                                onChange={formik.handleChange}
-                                value={formik.values.email}
-                            />
-                        </div>
+        <div className={styles.links}>
+            <p onClick={goLogin}>Hesabınız var? Daxil olun</p>
+        </div>
+      </form>
+    </div>
+  );
+};
 
-
-                        <label htmlFor="password">Password</label>
-                        <div className={styles.inputWrapper}>
-                            <FaLock />
-                            <input
-                                placeholder='Type your password'
-                                id="password"
-                                name="password"
-                                type="password"
-                                onChange={formik.handleChange}
-                                value={formik.values.password}
-                            />
-                        </div>
-
-                        <button type="submit"   >Sign up</button>
-                        <p>Do you have an account? <a href="/login">Login</a></p>
-                    </form>
-                </div>
-            </div>
-        </>
-    )
-}
-
-export default Signup
+export default Signup;

@@ -48,13 +48,12 @@ const Header = () => {
                     return prev;
                 }
             });
-        }, 150);
+        }, 170);
 
         return () => clearInterval(interval);
     }, [index, isDeleting]);
 
 
-    // const basket = useSelector((state) => state.basket.basket || []);
 
     const basketCount = useSelector((state) => state.basket.basket.length);
 
@@ -70,7 +69,7 @@ const Header = () => {
                     <div className={styles.input}>
                         <input
                             type="text"
-                            placeholder="Növbəti kitabınızı axtarın"
+                            placeholder={placeholder}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}

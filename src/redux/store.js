@@ -6,7 +6,7 @@ import  trproductSlice  from "./reducers/trproductSlice";
 import  rusproductSlice  from "./reducers/rusproductSlice";
 import  usaqproductSlice  from "./reducers/usaqbookSlice";
 import  ingproductSlice  from "./reducers/ingproducts";
-import  userSlice  from "./reducers/userSlice";
+import  authSlice  from "./reducers/authSlice";
 
 export const store = configureStore({
     reducer:{
@@ -17,6 +17,6 @@ export const store = configureStore({
         rusproducts:rusproductSlice,
         ingproducts:ingproductSlice,
         usaqproducts:usaqproductSlice,
-        user:userSlice
+        auth:authSlice
     }
 })

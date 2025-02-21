@@ -13,6 +13,28 @@
         font-family: "Jost", sans-serif;
     }
 
+    .searchContainer {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .searchInput {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: 0.3s;
+    }
+    
+    .searchInput:focus {
+        border-color: #007bff;
+    }
+    
+
     .sliderContainer {
         margin-top: 30px;
         display: flex;
