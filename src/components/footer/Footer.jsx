@@ -9,14 +9,14 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
 
 
 const Footer = () => {
     const navigate = useNavigate()
     return (
         <>
-            <div className={styles.containerFooter}>
+        
+            <footer className={styles.containerFooter}>
                 <div className={styles.footermenu}>
 
                     <div className={styles.mobile}>
@@ -67,7 +67,7 @@ const Footer = () => {
                 </div>
 
 
-            </div >
+            </footer >
             <div className={styles.bookcenter}>
                 <div className={styles.center}>
                     <p>© 2025 BOOKCENTER - Bütün hüquqlar qorunur  </p>

@@ -13,6 +13,8 @@ import { FaAngleDown } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/reducers/authSlice';
 import { getBasketThunk } from '../../redux/reducers/basketSlice';
+import Dark from "../../components/dark/Dark";
+
 
 const Header = () => {
     const navigate = useNavigate();
@@ -66,10 +68,11 @@ const Header = () => {
         dispatch(logout());
         navigate('/');
     };
-
+   
     return (
         <>
-            <div className={styles.headertop}>
+            <header className={styles.headertop}>
+                
                 <div className={styles.container}>
                     <div className={styles.logo}>
                         <Link to="/"> <img src={logo} alt="logo" /></Link>
@@ -134,7 +137,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
 
             <div className={styles.headerbottom}>
                 <div className={styles.bottom}>
@@ -153,6 +156,7 @@ const Header = () => {
                             <li> <button onClick={() => navigate('/bag')}>Çantalar</button></li>
                             <li> <button onClick={() => navigate('/giftbook')}>Hədiyyəlik</button> </li>
                             <li> <button onClick={() => navigate('/about')}>Haqqımızda</button></li>
+                            <li><Dark /></li>
                         </ul>
                     </div>
                     <div className={styles.contact}>
