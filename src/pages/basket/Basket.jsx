@@ -1,6 +1,6 @@
 import Layout from '../../components/layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
-import { decreaseQuantityThunk, deleteBasketThunk, getBasketThunk, increaseQuantityThunk } from '../../redux/reducers/basketSlice';
+import { decreaseQuantityThunk, deleteBasketThunk, increaseQuantityThunk } from '../../redux/reducers/basketSlice';
 import styles from './Basket.module.scss';
 import { useEffect, useState } from 'react';
 
@@ -8,10 +8,6 @@ const Basket = () => {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.basket) || [];
   const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    dispatch(getBasketThunk());
-  }, [dispatch]);
 
   useEffect(() => {
     const totalQuantity = basket.reduce((total, item) => total + (item.quantity || 1), 0);

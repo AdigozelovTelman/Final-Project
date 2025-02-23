@@ -109,10 +109,13 @@
                 color: #25262a;
             }
 
-            a {
+            button{
+                font-size: 15px;
                 text-decoration: none;
                 color: gray;
-
+                background-color: transparent;
+                border: none; 
+                cursor: pointer;
                 &:hover {
                     color: #3a2ee0;
                     transition: .3s;

@@ -15,15 +15,12 @@ const Azekitablar = () => {
 
     const products = useSelector((state) => state.products.products) || [];
 
-    // **Filter və sort birlikdə işləsin**
     const sortedAndFilteredProducts = () => {
-        // Axtarış tətbiq edilir
         let filtered = products.filter((item) =>
             item.title.toLowerCase().includes(searchText.toLowerCase())
         );
 
-        // Sıralama tətbiq edilir (`slice()` ilə yeni array yaradılır)
-        let sorted = [...filtered]; // Yeni array yarat
+        let sorted = [...filtered]; 
 
         if (sortType === "priceAsc") {
             sorted = sorted.sort((a, b) => a.price - b.price); // Qiymət artan

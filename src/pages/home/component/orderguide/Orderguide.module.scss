@@ -1,0 +1,42 @@
+.orderGuide {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  ol {
+    text-align: left;
+    padding: 0;
+    list-style-position: inside;
+  }
+  
+  li {
+    font-size: 16px;
+    color: #444;
+    margin: 10px 0;
+    padding-left: 10px;
+    position: relative;
+}
+
+.over::before {
+    content: "✔";
+    color: #2a9d8f;
+    font-weight: bold;
+    margin-right: 10px;
+  }

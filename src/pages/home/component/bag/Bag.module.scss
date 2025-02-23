@@ -1,0 +1,92 @@
+.bag {
+    text-align: center;
+    padding: 20px;
+  
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-family:"-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif";
+  
+    }
+  
+    .sliderContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .slider {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      padding: 10px;
+      background-color: white;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+  
+  
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+  
+        button {
+          padding: 8px 12px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.3s ease-in-out;
+  
+          &.basket {
+            background: #2a9d8f;
+            color: white;
+  
+            &:hover {
+              background: #21867a;
+            }
+          }
+  
+          &.wishlist {
+            background: #e63946;
+            color: white;
+  
+            &:hover {
+              background: #c5303a;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .slider {
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card {
+      width: 90%;
+    }
+  }
+  

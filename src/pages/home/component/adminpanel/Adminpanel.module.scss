@@ -39,12 +39,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .navbar ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
 
 
 .formContainer {
@@ -140,7 +134,7 @@
     }
   }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .navbar ul {
     flex-direction: column;
     gap: 15px;

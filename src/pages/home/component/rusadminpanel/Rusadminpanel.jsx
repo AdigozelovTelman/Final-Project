@@ -7,7 +7,7 @@ import Layout from '../../../../components/layout/Layout'
 import { useNavigate } from 'react-router-dom'
 
 const Rusadminpanel = () => {
-    const navigate =useNavigate()
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -37,13 +37,16 @@ const Rusadminpanel = () => {
         <>
             <Layout>
 
-            <div className={styles.header}>
+                <div className={styles.header}>
                     <div className={styles.navbar}>
                         <ul>
-                            <li> <button onClick={() => navigate('/adminpanel')} >Azerbaycan Admin Panel</button></li>
-                            <li> <button onClick={() => navigate('/turk adminpanel')} >Türk Admin Panel</button></li>
-                            <li> <button onClick={() => navigate('/rus adminpanel')} >Rus Admin Panel</button></li>
-                            <li> <button onClick={() => navigate('/ingilis adminpanel')} >İngilis Admin Panel</button></li>
+                            <li> <button onClick={() => navigate('/adminpanel')} >Azerbaycan </button></li>
+                            <li> <button onClick={() => navigate('/turk adminpanel')} >Türk </button></li>
+                            <li> <button onClick={() => navigate('/rus adminpanel')} >Rus </button></li>
+                            <li> <button onClick={() => navigate('/ingilis adminpanel')} >İngilis </button></li>
+                            <li> <button onClick={() => navigate('/notebook adminpanel')} >Dəftərxana </button></li>
+                            <li> <button onClick={() => navigate('/bag adminpanel')} >Çantalar</button></li>
+                            <li> <button onClick={() => navigate('/gift adminpanel')} >Hədiyyəlik </button></li>
                         </ul>
                     </div>
                 </div>

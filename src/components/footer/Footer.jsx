@@ -21,16 +21,16 @@ const Footer = () => {
                     <div className={styles.mobile}>
                         <h3>Şirkət</h3>
                         <button onClick={()=> navigate('/about')}>Haqqımızda</button>
-                        <button onClick={()=> navigate('')}>Necə Sifariş Edim?</button>
-                        <button onClick={()=> navigate('')}>Çatdırılma Şərtləri</button>
-                        <button onClick={()=> navigate('')}>Ödəniş Üsulları</button>
+                        <button onClick={()=> navigate('/orderguide')}>Necə Sifariş Edim?</button>
+                        <button onClick={()=> navigate('/delivery')}>Çatdırılma Şərtləri</button>
+                        <button onClick={()=> navigate('/paymentmethods')}>Ödəniş Üsulları</button>
                     </div>
                     <div className={styles.hardware}>
                         <h3>Müştəri Xidməti</h3>
-                        <a href="#">Sifarişin Statusu</a>
-                        <a href="#">Çatdırılma və İade</a>
-                        <a href="#">Hədiyyə Kartları</a>
-                        <a href="#">Endirim və Kampaniyalar</a>
+                        <button onClick={()=> navigate('/orderstatus')}>Sifarişin Statusu</button>
+                        <button onClick={()=> navigate('/deliveryreturn')}>Çatdırılma və İade</button>
+                        <button onClick={()=> navigate('/giftcards')}>Hədiyyə Kartları</button>
+                        <button onClick={()=> navigate('/discount')}>Endirim və Kampaniyalar</button>
                     </div>
                     <div className={styles.izle}>
                         <h3>Sosial media hesablarımız</h3>

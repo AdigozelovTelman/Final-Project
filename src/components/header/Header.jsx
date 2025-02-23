@@ -1,21 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './Header.module.scss'
-import logo from '../assets/images/WhatsApp_Şəkil_2025-02-03_saat_23.41.36_7e8ea673-removebg-preview.png'
+import React, { useEffect, useState } from 'react';
+import styles from './Header.module.scss';
+import logo from '../assets/images/WhatsApp_Şəkil_2025-02-03_saat_23.41.36_7e8ea673-removebg-preview.png';
 import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
-import Drawer from 'react-modern-drawer'
-import 'react-modern-drawer/dist/index.css'
+import Drawer from 'react-modern-drawer';
+import 'react-modern-drawer/dist/index.css';
 import { FaAngleDown } from "react-icons/fa";
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../redux/reducers/authSlice';
+import { getBasketThunk } from '../../redux/reducers/basketSlice';
 
 const Header = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState("");
+
+    useEffect(() => {
+        dispatch(getBasketThunk());
+      }, [dispatch]);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -24,10 +30,10 @@ const Header = () => {
         }
     };
 
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = () => {
-        setIsOpen((prevState) => !prevState)
-    }
+        setIsOpen((prevState) => !prevState);
+    };
 
     const fullText = "Növbəti kitabınızı axtarın";
     const [placeholder, setPlaceholder] = useState("");
@@ -53,10 +59,13 @@ const Header = () => {
         return () => clearInterval(interval);
     }, [index, isDeleting]);
 
-
-
     const basketCount = useSelector((state) => state.basket.basket.length);
+    const user = useSelector((state) => state.auth.user);
 
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/');
+    };
 
     return (
         <>
@@ -77,7 +86,16 @@ const Header = () => {
                         <button onClick={handleSearch}><FaSearch /></button>
                     </div>
                     <div className={styles.icons}>
-                        <FaUser onClick={() => navigate('/login')} />
+                        {user ? (
+                            <button
+                                className={styles.logoutButton}
+                                onClick={handleLogout}
+                            >
+                                <FaUser style={{ marginRight: "5px" }} /> Çıxış
+                            </button>
+                        ) : (
+                            <FaUser onClick={() => navigate('/login')} />
+                        )}
                         <FaHeart onClick={() => navigate('/wishlist')} />
                         <div className={styles.iconWrapper}>
                             <FaCartShopping onClick={() => navigate('/basket')} />
@@ -85,8 +103,7 @@ const Header = () => {
                         </div>
 
                         <div className={styles.hamburger}>
-                            <button onClick={toggleDrawer}><GiHamburgerMenu />
-                            </button>
+                            <button onClick={toggleDrawer}><GiHamburgerMenu /></button>
                             <Drawer
                                 open={isOpen}
                                 onClose={toggleDrawer}
@@ -104,11 +121,12 @@ const Header = () => {
                                                 <li> <button onClick={() => navigate('/ingilis kitablari')}>İngilis</button> </li>
                                             </ul>
                                         </li>
-                                        <li> <button> Dəftərxana</button></li>
-                                        <li> <button> Çantalar</button></li>
+                                        <li> <button onClick={() => navigate('/notebook')}> Dəftərxana</button></li>
+                                        <li> <button onClick={() => navigate('/bag')}> Çantalar</button></li>
                                         <li> <button onClick={() => navigate('/giftbook')}> Hədiyyəlik</button></li>
                                         <li> <button onClick={() => navigate('/about')}> Haqqımızda</button></li>
                                         <li> <button onClick={() => navigate('/payment')}> Onlayn ödəniş</button></li>
+                                        <li> <button onClick={() => navigate('/onlinechat')}> Onlayn Chat</button></li>
                                     </ul>
                                 </div>
                                 <div className={styles.contact}>
@@ -126,7 +144,6 @@ const Header = () => {
                         <ul>
                             <li className={styles.dropdown}>
                                 <button>Kitablar<FaAngleDown /></button>
-
                                 <ul className={styles.submenu}>
                                     <li> <button onClick={() => navigate('/azerbaycan kitablari')}> Azərbaycan</button> </li>
                                     <li> <button onClick={() => navigate('/turk kitablari')}>Türk</button> </li>
@@ -134,11 +151,12 @@ const Header = () => {
                                     <li> <button onClick={() => navigate('/ingilis kitablari')}>İngilis</button> </li>
                                 </ul>
                             </li>
-                            <li> <button>Dəftərxana</button></li>
-                            <li> <button>Çantalar</button></li>
+                            <li> <button onClick={() => navigate('/notebook')}>Dəftərxana</button></li>
+                            <li> <button onClick={() => navigate('/bag')}>Çantalar</button></li>
                             <li> <button onClick={() => navigate('/giftbook')}>Hədiyyəlik</button> </li>
                             <li> <button onClick={() => navigate('/about')}>Haqqımızda</button></li>
                             <li> <button onClick={() => navigate('/payment')}> Onlayn ödəniş</button></li>
+                            <li> <button onClick={() => navigate('/onlinechat')}> Onlayn Chat</button></li>
                         </ul>
                     </div>
                     <div className={styles.contact}>
@@ -147,7 +165,7 @@ const Header = () => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

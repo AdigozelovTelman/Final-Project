@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react'
 import Layout from '../../../../components/layout/Layout'
-import styles from './Ingilisadminpanel.module.scss'
 import { useFormik } from 'formik'
+import { deleteNotebookProductsThunk, getNotebookProductsThunk, postNotebookProductsThunk } from '../../../../redux/reducers/notebookSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteIngProductsThunk, getIngProductsThunk, postIngProductsThunk } from '../../../../redux/reducers/ingproducts'
 import { useNavigate } from 'react-router-dom'
+import styles from './Notebookadminpanel.module.scss'
 
-const Ingilisadminpanel = () => {
+const Notebookadminpanel = () => {
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getIngProductsThunk())
+        dispatch(getNotebookProductsThunk())
     }, [])
 
-    const ingproducts = useSelector((state) => state.ingproducts.ingproducts) || []
+    const notebookproducts = useSelector((state) => state.notebookproducts.notebookproducts) || []
 
     const deleteItem = (id) => {
-        dispatch(deleteIngProductsThunk(id))
+        dispatch(deleteNotebookProductsThunk(id))
     }
 
     const formik = useFormik({
@@ -28,7 +28,7 @@ const Ingilisadminpanel = () => {
             price: '',
         },
         onSubmit: values => {
-            dispatch(postIngProductsThunk(values))
+            dispatch(postNotebookProductsThunk(values))
             formik.resetForm();
         },
     });
@@ -37,7 +37,7 @@ const Ingilisadminpanel = () => {
         <>
             <Layout>
 
-            <div className={styles.header}>
+                <div className={styles.header}>
                     <div className={styles.navbar}>
                         <ul>
                         <li> <button onClick={() => navigate('/adminpanel')} >Azerbaycan </button></li>
@@ -81,8 +81,9 @@ const Ingilisadminpanel = () => {
                     </form>
                 </div>
 
+
                 <div className={styles.cards}>
-                    {ingproducts && ingproducts.map(item => {
+                    {notebookproducts && notebookproducts.map(item => {
                         return <div className={styles.card}>
                             <img src={item.image} alt={item.title} />
                             <p>{item.title}</p>
@@ -96,4 +97,4 @@ const Ingilisadminpanel = () => {
     )
 }
 
-export default Ingilisadminpanel
+export default Notebookadminpanel

@@ -39,14 +39,6 @@
     }
   }
   
-  @media (max-width: 768px) {
-    .navbar ul {
-      flex-direction: column;
-      gap: 15px;
-    }
-  }
-  
-  
   .formContainer {
       background-color: #f9f9f9;
       padding: 20px;
@@ -140,7 +132,7 @@
       }
     }
   
-  @media (max-width: 768px) {
+  @media (max-width: 991px) {
     .navbar ul {
       flex-direction: column;
       gap: 15px;

@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react'
-import Layout from '../../../../components/layout/Layout'
-import styles from './Ingilisadminpanel.module.scss'
-import { useFormik } from 'formik'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteIngProductsThunk, getIngProductsThunk, postIngProductsThunk } from '../../../../redux/reducers/ingproducts'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './Bagadminpanel.module.scss'
+import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import Layout from '../../../../components/layout/Layout';
+import { deleteBagProductsThunk, getBagProductsThunk, postBagProductsThunk } from '../../../../redux/reducers/bagSlice';
 
-const Ingilisadminpanel = () => {
+const Bagadminpanel = () => {
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getIngProductsThunk())
+        dispatch(getBagProductsThunk())
     }, [])
 
-    const ingproducts = useSelector((state) => state.ingproducts.ingproducts) || []
+    const bagproducts = useSelector((state) => state.bagproducts.bagproducts) || []
 
     const deleteItem = (id) => {
-        dispatch(deleteIngProductsThunk(id))
+        dispatch(deleteBagProductsThunk(id))
     }
 
     const formik = useFormik({
@@ -28,7 +28,7 @@ const Ingilisadminpanel = () => {
             price: '',
         },
         onSubmit: values => {
-            dispatch(postIngProductsThunk(values))
+            dispatch(postBagProductsThunk(values))
             formik.resetForm();
         },
     });
@@ -36,8 +36,7 @@ const Ingilisadminpanel = () => {
     return (
         <>
             <Layout>
-
-            <div className={styles.header}>
+                <div className={styles.header}>
                     <div className={styles.navbar}>
                         <ul>
                         <li> <button onClick={() => navigate('/adminpanel')} >Azerbaycan </button></li>
@@ -81,8 +80,9 @@ const Ingilisadminpanel = () => {
                     </form>
                 </div>
 
+
                 <div className={styles.cards}>
-                    {ingproducts && ingproducts.map(item => {
+                    {bagproducts && bagproducts.map(item => {
                         return <div className={styles.card}>
                             <img src={item.image} alt={item.title} />
                             <p>{item.title}</p>
@@ -96,4 +96,4 @@ const Ingilisadminpanel = () => {
     )
 }
 
-export default Ingilisadminpanel
+export default Bagadminpanel
