@@ -13,7 +13,7 @@ const Aboutbookcenter = () => {
                     <h1>Haqqımızda</h1>
                     <p className={styles.subtitle}>Mütaliənizin ən rahat ünvanı!</p>
                     <p>
-                        BookCenter.az e-mağazası 2025-ci ildə qurulmuşdur. Bu e-mağaza yerli və xarici
+                        BookCenter.az e-mağazası 2025-ci ildən fəaliyyətdədir. Bu e-mağaza yerli və xarici
                         kitabları ofisinizdən, evinizdən internet üzərindən və telefonla sifarişini təmin edir.
                         E-mağazamızdan alış-veriş etmək çox asandır. Saytda bölmələr, alt bölmələr və mövzular
                         üzrə müxtəlif dillərdə sadələşdirilmiş Kitab Axtarış Sistemi (KAS) fəaliyyət göstərir.
@@ -26,7 +26,7 @@ const Aboutbookcenter = () => {
                         Çətin tapılan, Azərbaycanda olmayan və az nüsxə ilə çap olunan kitabları bizim
                         köməyimizlə rahat şəkildə əldə edə bilərsiniz. Bununla yanaşı bizimlə partnyorluq
                         edən mətbəə və nəşriyyatların çap məhsullarını da çox sərfəli qiymətlərlə əldə
-                        etmək imkanı qazanırsınız. BookCenter.az e-mağazası Sizə yalnız orijinal məhsullar
+                        etmək imkanı qazanırsınız. BookCenter.az e-mağazası Sizə yalnız orjinal məhsullar
                         təqdim edir.
                     </p>
                     <p className={styles.italic}>
