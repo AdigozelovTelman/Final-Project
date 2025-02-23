@@ -25,10 +25,11 @@
 
     .carts {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
         gap: 20px;
         max-width: 1200px;
         width: 100%;
+        justify-content: center; 
 
         .cart {
             background: white;
@@ -65,58 +66,18 @@
     }
 }
 
-
-
-
-
-@media (max-width: 576px)  {
-    .container {
-        
-        .carts {
-            grid-template-columns: 1fr;
-
-            .cart {
-                padding: 15px;
-
-                img {
-                    width: 60px;
-                }
-
-                h3 {
-                    font-size: 24px;
-                }
-            }
-        }
-    }
-
-}
-@media  (max-width:430px) {
-    .container {
-        margin: 60% 0%;
-        .carts {
-            grid-template-columns: 1fr;
-
-            .cart {
-                padding: 15px;
-
-                img {
-                    width: 60px;
-                }
-
-                h3 {
-                    font-size: 24px;
-                }
-            }
-        }
-    }
-}
-
 @media (max-width: 991px) {
-    .container {
-        height: 100vh;
+    .carts {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
 
-        .carts {
-            grid-template-columns: repeat(2, 1fr);
-        }
+@media (max-width: 576px) {
+    .carts {
+        grid-template-columns: 1fr; 
+    }
+
+    .cart img {
+        width: 60px;
     }
 }

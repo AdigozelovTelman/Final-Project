@@ -5,6 +5,8 @@ function App() {
   return (
     <>
       <Router/>
+      <script src="//code.jivosite.com/widget/JXuanpLg1c" async></script> 
+
     </>
   );
 }

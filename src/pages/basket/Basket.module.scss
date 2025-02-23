@@ -104,6 +104,30 @@
             }
         }
     }
+    .confirmButton {
+        background-color: #5275c2;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        display: block;
+        margin: 20px auto; 
+    
+        &:hover {
+            background-color: #3B4E77; 
+            transform: scale(1.05); 
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        &:active {
+            transform: scale(0.95); 
+        }
+    }
+    
 }
 
 @media (max-width:576px) {

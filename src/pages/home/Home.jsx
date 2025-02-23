@@ -8,16 +8,18 @@ import Usaqbook from './component/usaqbook/Usaqbook'
 import Bizimferqimiz from './component/bizimferqimiz/Bizimferqimiz'
 import Ingbook from './component/ingbook/Ingbook'
 
+
+
 const Home = () => {
   return (
     <Layout>
-        <Newbook/>
-        <Azebook/>
-        <Trbook/>
-        <Rusbook/>
-        <Ingbook/>
-        <Usaqbook/>
-        <Bizimferqimiz/>
+      <Newbook />
+      <Azebook />
+      <Trbook />
+      <Rusbook />
+      <Ingbook />
+      <Usaqbook />
+      <Bizimferqimiz />
     </Layout>
   )
 }

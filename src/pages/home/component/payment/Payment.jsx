@@ -1,31 +1,35 @@
 import React, { useState } from "react";
-import styles from "./Payment.module.scss";
+import { useLocation } from "react-router-dom";
 import Layout from "../../../../components/layout/Layout";
+import styles from "./Payment.module.scss";
 
 const Payment = () => {
+    const location = useLocation();
+    const totalAmount = location.state?.totalAmount || 0;
+
     const [form, setForm] = useState({
-        amount: "",
+        cardNumber: "",
+        cvv: "",
+        expiry: "",
         name: "",
-        phone: "",
-        email: "",
     });
 
-    const [message, setMessage] = useState(""); 
+    const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
-        if (name === "amount" && (value < 0 || isNaN(value))) {
-            return; 
-        }
-
         setForm({ ...form, [name]: value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const isSuccess = Math.random() > 0.5; 
+        if (form.cardNumber.length !== 16 || form.cvv.length !== 3 || !form.expiry || !form.name) {
+            setMessage("Xahiş edirik, bütün məlumatları düzgün daxil edin! ❌");
+            return;
+        }
+
+        const isSuccess = Math.random() > 0.5;
 
         if (isSuccess) {
             setMessage("Ödəniş uğurlu oldu! ✅");
@@ -33,61 +37,56 @@ const Payment = () => {
             setMessage("Ödəniş alınmadı. ❌ Yenidən cəhd edin.");
         }
 
-        setForm({
-            amount: "",
-            name: "",
-            phone: "",
-            email: "",
-        });
-
         setTimeout(() => setMessage(""), 3000);
     };
+
+
 
     return (
         <Layout>
             <div className={styles.paymentContainer}>
-                <form className={styles.paymentForm} onSubmit={handleSubmit}>
-                    <label className={styles.label}>Ödəniş:</label>
-                    <div className={styles.inputGroup}>
-                        <input
-                            type="number"
-                            name="amount"
-                            placeholder="Məbləğ"
-                            value={form.amount}
-                            onChange={handleChange}
-                            min="0"
-                            required
-                        />
-                        <span className={styles.currency}>AZN</span>
-                    </div>
+                <h2>Ödəniş</h2>
+                <p>Ümumi məbləğ: <strong>{totalAmount.toFixed(2)} AZN</strong></p>
 
+                <form className={styles.paymentForm} onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="cardNumber"
+                        placeholder="Kart nömrəsi (16 rəqəm)"
+                        maxLength="16"
+                        value={form.cardNumber}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="expiry"
+                        placeholder="Bitmə tarixi (MM/YY)"
+                        value={form.expiry}
+                        maxLength="4"
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="cvv"
+                        placeholder="CVV (3 rəqəm)"
+                        maxLength="3"
+                        value={form.cvv}
+                        onChange={handleChange}
+                        required
+                    />
                     <input
                         type="text"
                         name="name"
-                        placeholder="Ödəyiçinin adı"
+                        placeholder="Kart sahibinin adı"
                         value={form.name}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Əlaqə nömrəsi"
-                        value={form.phone}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="e-mail"
-                        value={form.email}
                         onChange={handleChange}
                         required
                     />
 
                     <button type="submit" className={styles.submitButton}>
-                        Ödəniş et
+                        Ödənişi tamamla
                     </button>
                 </form>
 

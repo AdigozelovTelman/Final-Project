@@ -125,8 +125,6 @@ const Header = () => {
                                         <li> <button onClick={() => navigate('/bag')}> Çantalar</button></li>
                                         <li> <button onClick={() => navigate('/giftbook')}> Hədiyyəlik</button></li>
                                         <li> <button onClick={() => navigate('/about')}> Haqqımızda</button></li>
-                                        <li> <button onClick={() => navigate('/payment')}> Onlayn ödəniş</button></li>
-                                        <li> <button onClick={() => navigate('/onlinechat')}> Onlayn Chat</button></li>
                                     </ul>
                                 </div>
                                 <div className={styles.contact}>
@@ -155,8 +153,6 @@ const Header = () => {
                             <li> <button onClick={() => navigate('/bag')}>Çantalar</button></li>
                             <li> <button onClick={() => navigate('/giftbook')}>Hədiyyəlik</button> </li>
                             <li> <button onClick={() => navigate('/about')}>Haqqımızda</button></li>
-                            <li> <button onClick={() => navigate('/payment')}> Onlayn ödəniş</button></li>
-                            <li> <button onClick={() => navigate('/onlinechat')}> Onlayn Chat</button></li>
                         </ul>
                     </div>
                     <div className={styles.contact}>

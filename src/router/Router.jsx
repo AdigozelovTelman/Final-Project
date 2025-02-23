@@ -23,11 +23,9 @@ import Notebook from '../pages/home/component/notebook/Notebook'
 import Bagadminpanel from '../pages/home/component/bagadminpanel/Bagadminpanel'
 import Notebookadminpanel from '../pages/home/component/notebookadminpanel/Notebookadminpanel'
 import Giftadminpanel from '../pages/home/component/giftadminpanel/Giftadminpanel'
-import Client from '../pages/client/Client'
 import Orderguide from '../pages/home/component/orderguide/Orderguide'
 import PaymentMethods from '../pages/home/component/paymentmethods/PaymentMethods'
 import Delivery from '../pages/home/component/delivery/Delivery'
-import Orderstatus from '../pages/home/component/orderstatus/Orderstatus'
 import DeliveryReturn from '../pages/home/component/deliveryreturn/DeliveryReturn'
 import GiftCards from '../pages/home/component/giftcards/GiftCards'
 import Discount from '../pages/home/component/discount/Discount'
@@ -59,11 +57,9 @@ const Router = () => {
             <Route path='/bag adminpanel' element={<Bagadminpanel/>}/>
             <Route path='/notebook adminpanel' element={<Notebookadminpanel/>}/>
             <Route path='/gift adminpanel' element={<Giftadminpanel/>}/>
-            <Route path='/onlinechat' element={<Client/>}/>
             <Route path='/orderguide' element={<Orderguide/>}/>
             <Route path='/paymentmethods' element={<PaymentMethods/>}/>
             <Route path='/delivery' element={<Delivery/>}/>
-            <Route path='/orderstatus' element={<Orderstatus/>}/>
             <Route path='/deliveryreturn' element={<DeliveryReturn/>}/>
             <Route path='/giftcards' element={<GiftCards/>}/>
             <Route path='/discount' element={<Discount/>}/>

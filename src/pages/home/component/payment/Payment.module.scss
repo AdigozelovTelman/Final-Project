@@ -30,7 +30,7 @@
       transition: border-color 0.3s;
   
       &:focus {
-        border-color: #ff6600;
+        border-color: #5275c2;
         outline: none;
       }
     }
@@ -57,7 +57,7 @@
     }
   
     .currency {
-      background: #ff6600;
+      background: #5275c2;
       color: white;
       padding: 12px;
       font-weight: bold;
@@ -65,7 +65,7 @@
   }
   
   .submitButton {
-    background: #ff6600;
+    background: #5275c2;
     color: white;
     padding: 12px;
     border: none;
@@ -76,7 +76,7 @@
     transition: background 0.3s;
   
     &:hover {
-      background: #e65c00;
+      background: #3B4E77;
     }
   }
   
