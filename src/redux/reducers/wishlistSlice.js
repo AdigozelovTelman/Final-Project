@@ -2,14 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getWishlistThunk = createAsyncThunk('api/wishlist', async () => {
-    const response = await axios.get('http://localhost:5000/wishlist/')
+    const response = await axios.get('https://book-center-az-backend.vercel.app/wishlist/')
     console.log(response);
 
     return response.data
 })
 
 export const postWishlistThunk = createAsyncThunk("api/postwishlist", async (data) => {
-    axios.get("http://localhost:5000/wishlist/")
+    axios.get("https://book-center-az-backend.vercel.app/wishlist/")
         .then((res) => {
             const existingproducts = res.data.find((item) => item.title == data.title)
 
@@ -17,14 +17,14 @@ export const postWishlistThunk = createAsyncThunk("api/postwishlist", async (dat
                 alert("Artıq sevimlilərdə var")
             }
             else {
-                axios.post("http://localhost:5000/wishlist", data)
+                axios.post("https://book-center-az-backend.vercel.app/wishlist", data)
             }
         })
 
 })
 
 export const deleteWishlistThunk = createAsyncThunk('api/deletewishlist', async (id) => {
-    const response = await axios.delete(`http://localhost:5000/wishlist/${id}`)
+    const response = await axios.delete(`https://book-center-az-backend.vercel.app/wishlist/${id}`)
     return id
 })
 

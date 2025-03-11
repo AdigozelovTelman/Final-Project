@@ -2,29 +2,29 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getBasketThunk = createAsyncThunk('api/basket', async()=>{
-    const response = await axios.get('http://localhost:5000/basket/')
+    const response = await axios.get('https://book-center-az-backend.vercel.app/basket/')
     console.log(response);
 
     return response.data
 })
 export const postBasketThunk = createAsyncThunk('api/postbasket', async(data)=>{
-    const response = await axios.post('http://localhost:5000/basket/', data)
+    const response = await axios.post('https://book-center-az-backend.vercel.app/basket/', data)
     return response.data
     
     
 })
 export const deleteBasketThunk = createAsyncThunk('api/deletebasket', async(id)=>{
-    const response = await axios.delete(`http://localhost:5000/basket/${id}` )
+    const response = await axios.delete(`https://book-center-az-backend.vercel.app/basket/${id}` )
     return id
 })
 
 export const increaseQuantityThunk = createAsyncThunk('api/increaseQuantity', async (id) => {
-    const response = await axios.patch(`http://localhost:5000/basket/increase/${id}`);
+    const response = await axios.patch(`https://book-center-az-backend.vercel.app/basket/increase/${id}`);
     return response.data;
 });
 
 export const decreaseQuantityThunk = createAsyncThunk('api/decreaseQuantity', async (id) => {
-    const response = await axios.patch(`http://localhost:5000/basket/decrease/${id}`);
+    const response = await axios.patch(`https://book-center-az-backend.vercel.app/basket/decrease/${id}`);
     return response.data;
 });
 

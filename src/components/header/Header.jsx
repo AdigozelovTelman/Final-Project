@@ -128,6 +128,8 @@ const Header = () => {
                                         <li> <button onClick={() => navigate('/bag')}> Çantalar</button></li>
                                         <li> <button onClick={() => navigate('/giftbook')}> Hədiyyəlik</button></li>
                                         <li> <button onClick={() => navigate('/about')}> Haqqımızda</button></li>
+                                        <li><Dark /></li>
+
                                     </ul>
                                 </div>
                                 <div className={styles.contact}>

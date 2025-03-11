@@ -6,7 +6,7 @@ export const registerThunk = createAsyncThunk(
     async (data, { rejectWithValue }) => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/auth/register",
+          "https://book-center-az-backend.vercel.app/auth/register",
           data
         );
         return response.data;
@@ -29,7 +29,7 @@ export const loginThunk = createAsyncThunk(
         },
         {
           headers: {
-            "Content-Type": "application/json", // JSON formatında məlumat göndər
+            "Content-Type": "application/json", 
           },
         }
       );

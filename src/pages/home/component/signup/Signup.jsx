@@ -7,7 +7,6 @@ import styles from './Signup.module.scss'
 import * as Yup from "yup";
 import { registerThunk } from "../../../../redux/reducers/authSlice";
 
-// Form validasiya sxemi
 const validationSchema = Yup.object({
   name: Yup.string().required("Ad tələb olunur"),
   surname: Yup.string().required("Soyad tələb olunur"),
@@ -38,10 +37,10 @@ const Signup = () => {
         const response = await dispatch(registerThunk(values)).unwrap();
         if (response._id) {
           alert("Qeydiyyat uğurla tamamlandı!");
-          navigate("/login"); // Login səhifəsinə yönləndir
+          navigate("/login"); 
         }
       } catch (error) {
-        console.error("Qeydiyyat xətası:", error); // Xəta mesajını konsola yaz
+        console.error("Qeydiyyat xətası:", error);
       }
     },
   });
@@ -51,7 +50,6 @@ const Signup = () => {
       <form className={styles.registerForm} onSubmit={formik.handleSubmit}>
         <h2>Qeydiyyat</h2>
 
-        {/* Ad və Soyad yan-yana */}
         <div className={styles.nameFields}>
           <div>
             <label htmlFor="name">Ad</label>

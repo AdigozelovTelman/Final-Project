@@ -2,19 +2,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getBagProductsThunk = createAsyncThunk('api/bagProduct', async () => {
-    const response = await axios.get('http://localhost:5000/bagProduct')
+    const response = await axios.get('https://book-center-az-backend.vercel.app/bagProduct')
     console.log(response);
 
     return response.data
 })
 export const postBagProductsThunk = createAsyncThunk('api/postGiftproduct', async (data) => {
-    const response = await axios.post('http://localhost:5000/bagProduct', data)
+    const response = await axios.post('https://book-center-az-backend.vercel.app/bagProduct', data)
     return response.data
 
 })
 
 export const deleteBagProductsThunk = createAsyncThunk('api/deleteBagproduct', async (id) => {
-    const response = await axios.delete(`http://localhost:5000/bagProduct/${id}`)
+    const response = await axios.delete(`https://book-center-az-backend.vercel.app/bagProduct/${id}`)
     return id
 })
 

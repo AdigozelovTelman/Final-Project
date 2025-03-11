@@ -51,8 +51,8 @@ const Azekitablar = () => {
                     onChange={(e) => setSortType(e.target.value)}
                 >
                     <option value="default">Sıralama</option>
-                    <option value="priceDesc">Qiymət: Ən bahalı</option>  {/* Əvvəl "priceAsc" idi, indi düzəldi */}
-                    <option value="priceAsc">Qiymət: Ən ucuz</option>  {/* Əvvəl "priceDesc" idi, indi düzəldi */}
+                    <option value="priceDesc">Qiymət: Ən bahalı</option>  
+                    <option value="priceAsc">Qiymət: Ən ucuz</option>
                     <option value="titleAsc">Ad: A-Z</option>
                     <option value="titleDesc">Ad: Z-A</option>
                 </select>
