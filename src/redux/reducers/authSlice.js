@@ -22,7 +22,7 @@ export const loginThunk = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/login",
+        "https://book-center-az-backend.vercel.app/auth/login",
         {
           username: data.username,
           password: data.password,
