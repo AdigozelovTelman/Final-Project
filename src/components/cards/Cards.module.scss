@@ -86,8 +86,9 @@
 @media (max-width:576px) {
     .container {
         width: 90%;
+        height: 45vh;
         .imgBox{
-            height: 40vh;
+            height: 25vh;
             width: 85%;
             img{
                 height: 100%;
@@ -98,8 +99,9 @@
 
 @media (min-width: 577px) and (max-width: 991px) {
     .container {
+        height: 45vh;
         .imgBox{
-            height: 40vh;
+            height: vh;
             width: 90%;
             img{
                 height: 80%;
