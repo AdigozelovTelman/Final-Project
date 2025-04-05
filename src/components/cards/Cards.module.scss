@@ -86,7 +86,7 @@
 @media (max-width:576px) {
     .container {
         width: 90%;
-        height: 45vh;
+        height: 50vh;
         .imgBox{
             height: 25vh;
             width: 85%;
@@ -99,7 +99,7 @@
 
 @media (min-width: 577px) and (max-width: 991px) {
     .container {
-        height: 45vh;
+        height: 50vh;
         .imgBox{
             height: vh;
             width: 90%;
@@ -109,14 +109,3 @@
         }
     }
 }
-
-// @media (min-width: 577px) and (max-width: 991px) {
-//     .container {
-//         width: 30%; 
-//         .cards {
-//             display: grid;
-//             grid-template-columns: repeat(3, 1fr);
-//             gap: 20px;
-//         }
-//     }
-// }
